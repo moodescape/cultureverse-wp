@@ -121,3 +121,13 @@ in the footer change the category Video Games to Games
 in each block (books, movies, TV series, anime, games, music) make a poster on the left, and a description on the left, and above the description, the title of the book, movie, TV series
 In the music block... there probably shouldn't be posters, but since I'll be inserting via referral links, probably album covers without any text except maybe the album title, somehow design it
 there won't be a description in the music block, probably put the album covers with the title in a row and under each one a link for listening, and 2 rows
+the spoilers block is all, it needs to be renamed a bit. That is, in this block there will be info why or how this or that product is similar to the one they read or watched, and there may accidentally be spoilers, that is, let them open it at their own risk
+the spoilers block is all, it needs to be renamed a bit. That is, in this block there will be info why or how this or that product is similar to the one they read or watched, and there may accidentally be spoilers, that is, let them open it at their own risk
+change the block with spoilers in all sections
+change the block Similarity Analysis in all sections to spoiler sections
+The spoiler section should be on all blocks except music and it should open not with an arrow but as we had before, like a crossed-out eye and when you click on it, text appears, basically like before
+Similarity Analysis replace with Spoiler Alert
+Reveal Spoilers and the eye that you click on and the text hidden underneath it appears
+this blog is different from others, change it so that it looks like others
+Spoiler Section
+This section contains analysis of similarities and may reveal key plot points. Open at your own risk.  in the game block make it the same as the others, a crossed out eye that you click on and it lights up
