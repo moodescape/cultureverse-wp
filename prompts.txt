@@ -1,0 +1,12 @@
+Create a blog website where users can read articles about books, movies, series, anime, and games.
+Each article has:
+
+a main cover image,
+
+a text description,
+
+a section with similar recommendations (with poster and description),
+
+a spoiler section hidden behind a button with a warning.
+The site must support pagination (12 articles per page).
+We will use PostgreSQL on Railway for storage and add an admin panel for article management.

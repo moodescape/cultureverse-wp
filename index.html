@@ -1,19 +1,307 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EntertainBlogs - Discover Your Next Favorite</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .category-badge {
+            transition: all 0.3s ease;
+        }
+        .category-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .spoiler-content {
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+        .pagination-btn {
+            transition: all 0.2s ease;
+        }
+        .pagination-btn:hover {
+            transform: scale(1.05);
+        }
+        .recommendation-card {
+            transition: all 0.3s ease;
+        }
+        .recommendation-card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+                    <i data-feather="book-open" class="text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold heading-font text-gray-800">EntertainBlogs</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Home</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Books</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Movies</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Series</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Anime</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Games</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <i data-feather="search" class="text-gray-600"></i>
+                </button>
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold heading-font mb-4" data-aos="fade-up">Discover Your Next Obsession</h1>
+            <p class="text-xl max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">Explore reviews, recommendations, and deep dives into books, movies, series, anime, and games.</p>
+            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <button class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Browse Categories</button>
+                <button class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition">Latest Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="category-badge bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-medium flex items-center">
+                    <i data-feather="book" class="mr-2"></i> Books
+                </button>
+                <button class="category-badge bg-red-100 text-red-800 px-4 py-2 rounded-full font-medium flex items-center">
+                    <i data-feather="film" class="mr-2"></i> Movies
+                </button>
+                <button class="category-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium flex items-center">
+                    <i data-feather="tv" class="mr-2"></i> Series
+                </button>
+                <button class="category-badge bg-pink-100 text-pink-800 px-4 py-2 rounded-full font-medium flex items-center">
+                    <i data-feather="heart" class="mr-2"></i> Anime
+                </button>
+                <button class="category-badge bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium flex items-center">
+                    <i data-feather="gamepad" class="mr-2"></i> Games
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold heading-font text-gray-800 mb-8 text-center">Latest Articles</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article Card 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up">
+                    <img src="http://static.photos/books/640x360/1" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Books</span>
+                            <span class="text-gray-500 text-sm">May 15, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">The Hidden Gems of Contemporary Literature</h3>
+                        <p class="text-gray-600 mb-4">Discover five contemporary novels that deserve more recognition but offer profound storytelling experiences...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article Card 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/movies/640x360/2" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Movies</span>
+                            <span class="text-gray-500 text-sm">May 12, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">Cinematic Storytelling Evolution</h3>
+                        <p class="text-gray-600 mb-4">How modern filmmakers are redefining narrative structures through innovative visual techniques...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article Card 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/series/640x360/3" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Series</span>
+                            <span class="text-gray-500 text-sm">May 10, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">Complex Characters in Modern TV</h3>
+                        <p class="text-gray-600 mb-4">Analyzing how recent television shows develop multi-dimensional characters that break traditional archetypes...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article Card 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up">
+                    <img src="http://static.photos/anime/640x360/4" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-pink-100 text-pink-800 text-xs font-semibold px-2.5 py-0.5 rounded">Anime</span>
+                            <span class="text-gray-500 text-sm">May 8, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">Studio Ghibli's Environmental Themes</h3>
+                        <p class="text-gray-600 mb-4">Exploring how Miyazaki's films consistently weave environmental messages into fantastical narratives...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article Card 5 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/games/640x360/5" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Games</span>
+                            <span class="text-gray-500 text-sm">May 5, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">Narrative Innovation in Indie Games</h3>
+                        <p class="text-gray-600 mb-4">How independent developers are pushing storytelling boundaries with experimental mechanics...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article Card 6 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/books/640x360/6" alt="Article Cover" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Books</span>
+                            <span class="text-gray-500 text-sm">May 2, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">Dystopian Fiction in the Digital Age</h3>
+                        <p class="text-gray-600 mb-4">Examining how modern dystopian literature reflects contemporary technological anxieties...</p>
+                        <a href="article.html" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                            Read More
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center space-x-2">
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">
+                        <i data-feather="chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white">1</button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">2</button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">3</button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">...</button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">10</button>
+                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-gray-50">
+                        <i data-feather="chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center">
+                            <i data-feather="book-open" class="text-white w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font">EntertainBlogs</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your ultimate destination for entertainment insights, reviews, and recommendations across books, movies, series, anime, and games.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Movies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">TV Series</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Anime</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Video Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Get the latest articles delivered to your inbox.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-lg">
+                            <i data-feather="send" class="text-white"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2023 EntertainBlogs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>AOS.init();</script>
+    <script>feather.replace();</script>
+</body>
 </html>
