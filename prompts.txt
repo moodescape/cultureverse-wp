@@ -111,3 +111,7 @@ below similar articles so that they are displayed in small blocks
 make similar articles below smaller and in a row
 make arrows for scrolling and photos at the top, and similar articles at the bottom
 delete this
+delete this
+delete this
+delete this
+delete this
