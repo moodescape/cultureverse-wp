@@ -31,3 +31,8 @@ There should be 12 articles on the page, 3 in a row and 4 lines down
 There should be 12 articles on the page, 3 in a row and 4 lines down
 There should be 12 articles on the page, 3 in a row and 4 lines down
 There should be 12 articles on the page, 3 in a row and 4 lines down
+each article has a Play button, make it so that they are on the same level, for example at the bottom of the article block, so that it is symmetrical
+each article has a Play button, make it so that they are on the same level, for example at the bottom of the article block, so that it is symmetrical
+remove the line Contacts and Careers
+remove the line Careers
+remove the line Contacts
