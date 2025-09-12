@@ -91,3 +91,16 @@ add more poster, description, spoiler and block with a link
 add more poster, description, spoiler and block with a link
 add more poster, description, spoiler and block with a link
 add more poster, description, spoiler and block with a link
+Make it the size of a book cover
+delete it
+add description after title before spoiler block
+Delete this
+delete this text under the title By Jane Smith
+•
+May 15, 2023
+•
+8 min read
+Make it a little more compact and when you click on it, the photo will enlarge and close with a cross or esc on the keyboard
+Make it a little more compact and when you click on it, the photo will enlarge and close with a cross or esc on the keyboard
+when the photo is enlarged, you can click them using the arrows on the keyboard
+in phone mode the blocks are book, movies, series, anime, music, the category title should be above the poster, and the poster above the description
