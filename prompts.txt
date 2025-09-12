@@ -47,3 +47,6 @@ Align the text at the bottom with the information in the footer to the center
 Align the text at the bottom with the information in the footer to the center
 Align the text at the bottom with the information in the footer to the center
 replace 2023 with 2025
+Each article has a Play button, make sure that all 12 articles have this button at the bottom of the border so that it is symmetrical
+Each article has a Play button, make sure that all 12 articles have this button at the bottom of the border so that it is symmetrical
+Each article has a Play button, make sure that all 12 articles have this button at the bottom of the border so that it is symmetrical
