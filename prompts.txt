@@ -15,3 +15,6 @@ come up with another name
 come up with another name
 change the name to this
 change the name to this  CultureVerse
+add search bar to center
+add search bar to center
+remove these buttons
