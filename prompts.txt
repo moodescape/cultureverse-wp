@@ -118,3 +118,6 @@ delete this
 delete this
 remove the subscription block at the bottom
 in the footer change the category Video Games to Games
+in each block (books, movies, TV series, anime, games, music) make a poster on the left, and a description on the left, and above the description, the title of the book, movie, TV series
+In the music block... there probably shouldn't be posters, but since I'll be inserting via referral links, probably album covers without any text except maybe the album title, somehow design it
+there won't be a description in the music block, probably put the album covers with the title in a row and under each one a link for listening, and 2 rows
