@@ -131,3 +131,7 @@ Reveal Spoilers and the eye that you click on and the text hidden underneath it 
 this blog is different from others, change it so that it looks like others
 Spoiler Section
 This section contains analysis of similarities and may reveal key plot points. Open at your own risk.  in the game block make it the same as the others, a crossed out eye that you click on and it lights up
+make this photo the size of a book cover
+make this photo the size of a movie poster
+make this photo the size of an anime poster
+make this photo the size of a game poster
