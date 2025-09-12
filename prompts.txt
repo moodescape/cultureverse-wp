@@ -135,3 +135,19 @@ make this photo the size of a book cover
 make this photo the size of a movie poster
 make this photo the size of an anime poster
 make this photo the size of a game poster
+create for each category (Movies, TV series, anime, games) pages of articles that we just made for the Books category. Only in each article, depending on the category, the first block will be different, if the article is for the category movies, then the first block will not be books but movies, that is, they change places. If the article is for the category games, then the block of games comes first and the block of books goes to down to the place where the games were
+create for each category (Movies, TV series, anime, games) pages of articles that we just made for the Books category. Only in each article, depending on the category, the first block will be different, if the article is for the category movies, then the first block will not be books but movies, that is, they change places. If the article is for the category games, then the block of games comes first and the block of books goes to down to the place where the games were
+create 4 more pages for articles
+create 4 more pages for articles
+create 4 more pages for articles
+create 4 more pages for articles
+create 4 more pages for articles
+duplicate this page so that it opens with the second article from the main page
+duplicate this page so that it opens with the second article from the main page
+create an article page that opens with a block with this name Cinematic Storytelling Evolution
+create an article page that opens with a block with this name Cinematic Storytelling Evolution
+create 4 article page 
+create 4 article page 
+create 4 article page 
+create 4 article page 
+create 4 pages with the text of articles
