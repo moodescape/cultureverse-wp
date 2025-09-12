@@ -106,3 +106,8 @@ when the photo is enlarged, you can click them using the arrows on the keyboard
 in phone mode the blocks are book, movies, series, anime, music, the category title should be above the poster, and the poster above the description
 in computer mode the same. categories of blocks books, movies series, anime, games, music, the title should be above the poster, and the poster above the description
 in the book, movie, series, anime, games, music blocks, categories (books, movies, series and others) should be above the poster, and the poster above the description
+make a similar article here
+below similar articles so that they are displayed in small blocks
+make similar articles below smaller and in a row
+make arrows for scrolling and photos at the top, and similar articles at the bottom
+delete this
