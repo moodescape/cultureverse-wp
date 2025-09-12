@@ -51,3 +51,43 @@ Each article has a Play button, make sure that all 12 articles have this button 
 Each article has a Play button, make sure that all 12 articles have this button at the bottom of the border so that it is symmetrical
 Each article has a Play button, make sure that all 12 articles have this button at the bottom of the border so that it is symmetrical
 Change the appearance. At the top there should be a poster of the book, the one that the user has read next to the title, and under the main photo gallery, scroll in a smaller format photos that scroll and if you click they increase, there they insert photos of books if it is a series. Then there is an article, several blocks are conditionally divided, Books, Movies/TV series, anime, games, music. In the kadomblock on the left there is a poster on the right is a description, a spoiler block that the user chooses to open or not, and a link to where I will insert the affiliate program for purchase or viewing
+Make the top photo the most important, it is the size of a book cover, it has no category on the side, a description on the right and a gallery under the photo. it is on the backing
+make the gallery longer under the photo and description
+make the gallery longer under the photo and description
+No. The very first photo, it is also the main one, the size of a bookshelf, it is located at the top as if the footer is lying on a colored backing. On the right is a poster, on the left is a description, and under the photo with the description are photos of more books from this series. Then the blocks begin conditionally divided by a line. Books, and then there is a poster on the right, a description on the left and under the description is the author's note, that is, spoilers. and in this block there are several books. After the Books block there is a block of films and TV series, also on the right, a poster on the left, a description and spoilers, and just like in the block with books, several pieces and a link to my affiliate link. And then there is a block of anime, games, music
+No. The very first photo, it is also the main one, the size of a bookshelf, it is located at the top as if the footer is lying on a colored backing. On the right is a poster, on the left is a description, and under the photo with the description are photos of more books from this series. Then the blocks begin conditionally divided by a line. Books, and then there is a poster on the right, a description on the left and under the description is the author's note, that is, spoilers. and in this block there are several books. After the Books block there is a block of films and TV series, also on the right, a poster on the left, a description and spoilers, and just like in the block with books, several pieces and a link to my affiliate link. And then there is a block of anime, games, music
+No. The very first photo, it is also the main one, the size of a bookshelf, it is located at the top as if the footer is lying on a colored backing. On the right is a poster, on the left is a description, and under the photo with the description are photos of more books from this series. Then the blocks begin conditionally divided by a line. Books, and then there is a poster on the right, a description on the left and under the description is the author's note, that is, spoilers. and in this block there are several books. After the Books block there is a block of films and TV series, also on the right, a poster on the left, a description and spoilers, and just like in the block with books, several pieces and a link to my affiliate link. And then there is a block of anime, games, music
+No. The very first photo, it is also the main one, the size of a bookshelf, it is located at the top as if the footer is lying on a colored backing. On the right is a poster, on the left is a description, and under the photo with the description are photos of more books from this series. Then the blocks begin conditionally divided by a line. Books, and then there is a poster on the right, a description on the left and under the description is the author's note, that is, spoilers. and in this block there are several books. After the Books block there is a block of films and TV series, also on the right, a poster on the left, a description and spoilers, and just like in the block with books, several pieces and a link to my affiliate link. And then there is a block of anime, games, music
+No. Make the main part at the top with a poster and description and photos of books from the series. And after the photo there is a block Books, Movies/TV series, anime, games, music, separated by a line.
+Delete this In a literary landscape dominated by bestsellers and established names, some truly exceptional works slip through the cracks. These hidden gems offer unique perspectives, innovative storytelling techniques, and profound emotional depth that rival any celebrated masterpiece.
+
+What Makes a Literary Gem?
+Hidden gems aren't necessarily obscure works—they're books that deserve wider recognition for their exceptional qualities. They might feature groundbreaking narrative techniques, explore underrepresented themes, or simply tell stories with extraordinary craftsmanship that haven't yet reached mainstream attention.
+
+1. "The Seven Moons of Maali Almeida" by Shehan Karunatilaka
+This Booker Prize winner combines magical realism with political satire in post-colonial Sri Lanka. Karunatilaka crafts a darkly humorous tale of a recently deceased photographer navigating the afterlife while trying to solve his own murder. The novel's unique voice and perspective on conflict make it a standout work that deserves broader recognition.
+
+2. "Klara and the Sun" by Kazuo Ishiguro
+From the Nobel laureate comes this haunting story told from the perspective of an artificial friend observing human behavior. Ishiguro explores themes of love, sacrifice, and what makes us human through Klara's innocent yet perceptive eyes. The novel's quiet power lies in its examination of consciousness and connection.
+
+"These lesser-known treasures often provide the most rewarding reading experiences precisely because they haven't been filtered through mass marketing expectations."
+Why Seek Out Hidden Gems?
+Reading beyond the bestseller lists offers several benefits. You'll encounter diverse voices and perspectives that challenge conventional narratives. These works often experiment with form and structure in ways that established authors might not risk. Most importantly, discovering an overlooked masterpiece creates a personal connection that feels genuinely earned rather than prescribed by cultural consensus.
+
+The thrill of uncovering a hidden gem also connects readers to the joy of curation—finding something special before it becomes common knowledge. This sense of discovery enhances the reading experience, making each page feel like unearthing a treasure.
+
+Spoiler Alert
+This section contains spoilers for the ending of "The Seven Moons of Maali Almeida". Click below to reveal content.
+
+Reveal Spoilers
+delete this
+add spoiler tab to each block, movies, series, anime, games, music
+And in each block, books, movies, TV series, anime, games, music, add one more item, or better yet two (that is, a poster description, a spoiler block, and my affiliate link)
+And in each block, books, movies, TV series, anime, games, music, add one more item, or better yet two (that is, a poster description, a spoiler block, and my affiliate link)
+And in each block, books, movies, TV series, anime, games, music, add one more item, or better yet two (that is, a poster description, a spoiler block, and my affiliate link)
+in each block make 3 elements (poster, description, spoiler and block with a link)
+ make 3 elements (poster, description, spoiler and block with a link)
+add more poster, description, spoiler and block with a link
+add more poster, description, spoiler and block with a link
+add more poster, description, spoiler and block with a link
+add more poster, description, spoiler and block with a link
