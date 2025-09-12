@@ -10,3 +10,8 @@ a section with similar recommendations (with poster and description),
 a spoiler section hidden behind a button with a warning.
 The site must support pagination (12 articles per page).
 We will use PostgreSQL on Railway for storage and add an admin panel for article management.
+remove the Sign in button and change the search bar
+come up with another name
+come up with another name
+change the name to this
+change the name to this  CultureVerse
