@@ -115,3 +115,6 @@ delete this
 delete this
 delete this
 delete this
+delete this
+remove the subscription block at the bottom
+in the footer change the category Video Games to Games
