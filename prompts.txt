@@ -45,3 +45,5 @@ remove the subscription block at the bottom
 align this to the center
 Align the text at the bottom with the information in the footer to the center
 Align the text at the bottom with the information in the footer to the center
+Align the text at the bottom with the information in the footer to the center
+replace 2023 with 2025
