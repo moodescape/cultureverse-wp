@@ -18,3 +18,9 @@ change the name to this  CultureVerse
 add search bar to center
 add search bar to center
 remove these buttons
+replace with something neutral
+replace heart svg with something neutral
+as on others button add svg icon
+as on others button add svg icon
+add svg icon to games button
+add svg icon to play button
