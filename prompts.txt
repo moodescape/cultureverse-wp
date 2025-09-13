@@ -173,3 +173,32 @@ rename this file to article-movie.html. And swap the book blocks and the block s
 rename this file to article-movie.html. And swap the book blocks and the block so that first the movies come, then the books, and then everything else
 rename this file to article-movie.html. 
 rename this file to article-movie.html. 
+article in category Movies, second on page make it so when you click on Play it leads to article pages
+create 4 pages of text for each category Movies, TV series, anime, games
+create 4 pages of text for each category Movies, TV series, anime, games
+create 4 pages of text for each category Movies, TV series, anime, games
+swap the Books block with the Movies block
+swap the Books block with the Movies block
+create pages of text for each category  TV series
+create page of text for category  TV series
+make the button work so that it leads to the main page
+make it so that when you click it opens, like this on all blocks
+when you click on this button the text opens
+delete this
+remove spoiler warning bloc
+Make the Spoiler Alert button work the same on all blocks Movies, TV series, anime, games
+remove Potential Spoiler bloc
+delete Potential Spoiler block
+Delete Potential Spoiler block
+from the Play button, if you click, a link goes to the page article.html
+Create link pages for those listed in the Footer, About us, Privacy policy, Terms of Services
+Create pages About Us
+Delete Our Team block
+Create page Privacy Policy
+Delete Contact Us point 6
+Create page Terms of Service
+button  Privacy Policy leads to page privacy-policy.html
+button Terms of Service leads to page terms-of-service.html
+make the pages flip when there are 12 articles on a page and you can click them with arrows
+create another article on page 2 index.html
+create another article on page 2 index.html

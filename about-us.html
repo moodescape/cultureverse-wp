@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CultureVerse</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+                    <i data-feather="book-open" class="text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Books</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Movies</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Series</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Anime</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Games</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <i data-feather="search" class="absolute left-3 top-2.5 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold heading-font text-gray-800 mb-6">About CultureVerse</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover the story behind our passion for storytelling across all media.</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Our Mission</h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">
+                        At CultureVerse, we believe that great stories transcend their medium. Whether it's through books, films, games, or anime, compelling narratives have the power to connect us, challenge our perspectives, and expand our understanding of the world.
+                    </p>
+                    <p class="mb-4">
+                        Our mission is to bridge the gaps between different forms of storytelling, helping enthusiasts discover new favorites while appreciating the unique strengths of each medium.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Our Approach</h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">
+                        What sets CultureVerse apart is our commitment to comparative analysis. We don't just review books, movies, or games in isolation - we examine how storytelling techniques translate across media, what each form does uniquely well, and how innovations in one medium can inspire others.
+                    </p>
+                    <p class="mb-4">
+                        Our articles combine deep research with accessible writing, making complex narrative concepts understandable while never talking down to our readers. Whether you're a casual fan or a media scholar, we have something for you.
+                    </p>
+                    <p>
+                        We're proud to be an independent publication, free from corporate influence, allowing us to maintain our editorial integrity and focus on what truly matters - the stories.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center">
+                            <i data-feather="book-open" class="text-white w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font">CultureVerse</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your ultimate destination for entertainment insights, reviews, and recommendations across books, movies, series, anime, and games.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Movies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">TV Series</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Anime</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about-us.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p class="text-center">&copy; 2025 CultureVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
