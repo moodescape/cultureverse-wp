@@ -169,3 +169,7 @@ article-games.html
 Delete Home
 remove category House in the header
 remove category House in the header
+rename this file to article-movie.html. And swap the book blocks and the block so that first the movies come, then the books, and then everything else
+rename this file to article-movie.html. And swap the book blocks and the block so that first the movies come, then the books, and then everything else
+rename this file to article-movie.html. 
+rename this file to article-movie.html. 
