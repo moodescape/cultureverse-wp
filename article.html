@@ -53,7 +53,13 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 relative">
+  <!-- Фон -->
+<div id="page-bg"
+     class="fixed inset-0 -z-20 bg-no-repeat bg-cover bg-center">
+</div>
+  <!-- затемнение -->
+  <div class="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-gray-50"></div>
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -63,19 +69,13 @@
                 </div>
                 <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
             </a>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Books</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Movies</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Series</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Anime</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Games</a>
-            </nav>
-            
             <div class="flex items-center space-x-4">
                 <div class="relative">
-                    <input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+<input type="text" placeholder="Search articles..." autocomplete="off"
+       class="search-input pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                     <i data-feather="search" class="absolute left-3 top-2.5 text-gray-400"></i>
+                    <div id="search-suggestions" 
+     class="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-lg shadow-lg mt-1 hidden z-50"></div>
                 </div>
             </div>
         </div>
@@ -89,20 +89,13 @@
                 <div class="flex flex-col md:flex-row gap-8">
                     <!-- Main Poster -->
                     <div class="md:w-1/3">
-                        <img src="http://static.photos/books/640x960/1" alt="Main Book Cover" class="w-48 h-72 object-cover rounded-lg shadow-xl mx-auto">
+<img id="article-cover" src="" alt="Main Book Cover" class="w-48 h-72 object-cover rounded-lg shadow-xl mx-auto">
                     </div>
                     
                     <!-- Description -->
                     <div class="md:w-2/3">
-                        <h1 class="text-4xl font-bold heading-font text-gray-800 mb-4">The Hidden Gems of Contemporary Literature</h1>
-                        <div class="prose max-w-none text-gray-700 mb-8">
-                            <p class="text-lg mb-4">
-                                In today's media landscape, storytelling has evolved beyond traditional boundaries. From novels to films, TV series to video games, creators are pushing the limits of narrative in exciting new ways.
-                            </p>
-                            <p class="mb-4">
-                                This exploration examines how contemporary storytelling techniques are being adapted across different media formats, creating immersive experiences that engage audiences in unprecedented ways.
-                            </p>
-                        </div>
+<h1 id="article-title" class="text-4xl font-bold heading-font text-gray-800 mb-4"></h1>
+                       <div id="article-content" class="prose max-w-none text-gray-700 mb-8"></div>
                     </div>
                 </div>
                 
@@ -110,16 +103,9 @@
                 <div class="mt-8">
                     <h2 class="text-xl font-bold heading-font text-gray-800 mb-4">Related Works</h2>
                     <div class="relative">
-                        <div class="flex overflow-x-auto gap-4 pb-4 gallery scroll-smooth">
-                        <img src="http://static.photos/books/200x300/1" alt="Book 1" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/2" alt="Book 2" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/3" alt="Book 3" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/4" alt="Book 4" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/5" alt="Book 5" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/6" alt="Book 6" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/7" alt="Book 7" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        <img src="http://static.photos/books/200x300/8" alt="Book 8" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">
-                        </div>
+                       <div class="flex overflow-x-auto gap-4 pb-4 gallery scroll-smooth" id="article-gallery">
+  <!-- сюда скрипт подставит картинки -->
+</div>
                     </div>
                 </div>
             </div>
@@ -138,273 +124,38 @@
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Books</h2>
-                        <div class="flex flex-col md:flex-row gap-8">
-                            <div class="md:w-1/3">
-                                <img src="http://static.photos/books/640x960/1" alt="Book Cover" class="w-48 h-72 object-cover rounded-lg shadow">
-                            </div>
-                            <div class="md:w-2/3">
-                                <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">The Hidden Gems of Contemporary Literature</h3>
-                                <div class="prose max-w-none text-gray-700 mb-6">
-                                    <p>Contemporary novels continue to push boundaries with experimental structures and diverse voices. These selections showcase the breadth of modern literary innovation.</p>
-                                </div>
-                            
-                            <!-- Spoiler Section -->
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
-                                <div class="flex items-start">
-                                    <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
-                                    <div>
-                                        <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
-                                        <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
-                                        <button class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center" onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal Spoilers
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="spoiler-content bg-gray-100 rounded-lg mb-6">
-                                <h3 class="font-bold text-gray-800 text-lg mb-2">Similarity Analysis</h3>
-                                <p class="text-gray-700">
-                                    This content shares thematic elements with the main article, particularly in its exploration of identity and transformation. Both works use visual metaphors to convey internal struggles. Note: Some details below may reveal key plot points.
-                                </p>
-                            </div>
-                            
-                            <!-- Affiliate Link -->
-                            <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
-                                Buy Now on Amazon
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                        <div id="books-cards" class="space-y-12"></div>
 
                 <!-- Movies/TV Series Section -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Movies/TV Series</h2>
-                        <div class="flex flex-col md:flex-row gap-8">
-                            <div class="md:w-1/3">
-                                <img src="http://static.photos/movies/640x960/1" alt="Movie Poster" class="w-48 h-72 object-cover rounded-lg shadow">
-                            </div>
-                            <div class="md:w-2/3">
-                                <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">Cinematic Storytelling Evolution</h3>
-                                <div class="prose max-w-none text-gray-700 mb-6">
-                                    <p>Modern filmmakers are blending traditional narrative with interactive elements, creating hybrid experiences that challenge passive viewing.</p>
-                                    <p>From nonlinear storytelling to participatory cinema, these works redefine what movies can be.</p>
-                                </div>
-                            
-                            <!-- Spoiler Section -->
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
-                                <div class="flex items-start">
-                                    <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
-                                    <div>
-                                        <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
-                                        <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
-                                        <button class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center" onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal Spoilers
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="spoiler-content bg-gray-100 rounded-lg mb-6">
-                                <h3 class="font-bold text-gray-800 text-lg mb-2">Why This is Similar</h3>
-                                <p class="text-gray-700">
-                                    Like the main article's focus, this movie also explores themes of self-discovery through unconventional narrative structures. Both works use magical realism to examine personal and political conflicts, though this recommendation takes a more introspective approach. Note: Some plot details below may reveal key moments.
-                                </p>
-                            </div>
-                            
-                            <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
-                                Watch on Netflix
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                       <div id="movies-cards" class="space-y-12"></div>
 
                 <!-- Anime Section -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Anime</h2>
-                        <div class="flex flex-col md:flex-row gap-8">
-                            <div class="md:w-1/3">
-                                <img src="http://static.photos/anime/640x960/1" alt="Anime Poster" class="w-48 h-72 object-cover rounded-lg shadow">
-                            </div>
-                            <div class="md:w-2/3">
-                                <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">Studio Ghibli's Environmental Themes</h3>
-                                <div class="prose max-w-none text-gray-700 mb-6">
-                                    <p>Anime continues to lead in visual storytelling innovation, with creators developing new techniques for emotional expression and world-building.</p>
-                                    <p>These selections highlight how animation can convey complex narratives through its unique visual language.</p>
-                                </div>
-                            
-                            <!-- Spoiler Section -->
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
-                                <div class="flex items-start">
-                                    <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
-                                    <div>
-                                        <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
-                                        <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
-                                        <button class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center" onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal Spoilers
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="spoiler-content bg-gray-100 p-4 rounded-lg mb-6">
-                                <h3 class="font-bold text-gray-800 text-lg mb-2">Why This is Similar</h3>
-                                <p class="text-gray-700">
-                                    This anime shares thematic elements with the main content, particularly in its exploration of identity and transformation. Both works use visual metaphors to convey internal struggles. Note: Some character details below may reveal key plot points.
-                                </p>
-                            </div>
-                            
-                            <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
-                                Watch on Crunchyroll
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                        <div id="anime-cards" class="space-y-12"></div>
+
 
                 <!-- Games Section -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Games</h2>
-                        <div class="flex flex-col md:flex-row gap-8">
-                            <div class="md:w-1/3">
-                                <img src="http://static.photos/games/640x960/1" alt="Game Cover" class="w-48 h-72 object-cover rounded-lg shadow">
-                            </div>
-                            <div class="md:w-2/3">
-                                <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">Narrative Innovation in Indie Games</h3>
-                                <div class="prose max-w-none text-gray-700 mb-6">
-                                    <p>Interactive storytelling in games creates unprecedented player agency, allowing narratives to evolve based on user decisions.</p>
-                                    <p>These titles demonstrate how games can tell stories in ways no other medium can match.</p>
-                                </div>
-                            
-                            <!-- Spoiler Section -->
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
-                                <div class="flex items-start">
-                                    <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
-                                    <div>
-                                        <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
-                                        <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
-                                        <button class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center" onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal Spoilers
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="spoiler-content bg-gray-100 p-4 rounded-lg mb-6">
-                                <h3 class="font-bold text-gray-800 text-lg mb-2">Why This is Similar</h3>
-                                <p class="text-gray-700">
-                                    This game's narrative structure mirrors the main content's experimental approach, offering multiple perspectives on the same events. Both works challenge traditional storytelling conventions. Note: Some gameplay details below may reveal key endings.
-                                </p>
-                            </div>
-                            
-                            <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
-                                Get on Steam
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                        <div id="games-cards" class="space-y-12"></div>
 
-                <!-- Music Section -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Music</h2>
-                        
-                        <!-- First Row of Albums -->
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-                            <!-- Album 1 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/1" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 1</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Album 2 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/2" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 2</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Album 3 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/3" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 3</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Second Row of Albums -->
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                            <!-- Album 4 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/4" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 4</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Album 5 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/5" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 5</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Album 6 -->
-                            <div class="flex flex-col items-center">
-                                <img src="http://static.photos/music/300x300/6" alt="Album Cover" class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
-                                <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">Album Title 6</h3>
-                                <div class="flex gap-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                                        <i data-feather="music" class="inline mr-1"></i> Spotify
-                                    </a>
-                                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                                        <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                </div>
-            </div>
+
+            <!-- Music Section -->
+<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+  <div class="p-6">
+    <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Music</h2>
+
+    <!-- Контейнер для альбомов -->
+    <div id="music-cards" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
+  </div>
+</div>
+
             
             <!-- Similar Articles -->
             <div class="mt-16">
@@ -590,5 +341,427 @@
             });
         });
     </script>
+   <script>
+  async function loadArticle() {
+    try {
+      const res = await fetch("http://localhost:1337/api/articles?populate=*");
+     const json = await res.json();
+const data = json?.data;
+
+
+
+   const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const article = json.data.find(a => a.id == id) || json.data[0];
+
+
+      // Подставляем картинку
+const coverUrl = posterUrl(article.Cover, "http://static.photos/books/640x960/placeholder.png");
+document.getElementById("article-cover").src = coverUrl;
+
+
+      // Подставляем заголовок
+      document.getElementById("article-title").textContent = article.Title;
+
+      // Подставляем текст
+      const contentDiv = document.getElementById("article-content");
+      // СТАЛО — безопасно для null
+const contentBlocks = Array.isArray(article.Content) ? article.Content : [];
+contentDiv.innerHTML = contentBlocks
+  .map(block => Array.isArray(block.children) ? block.children.map(child => child.text || "").join("") : "")
+  .filter(Boolean)
+  .map(text => `<p class="mb-4">${text}</p>`)
+  .join("");
+
+// Подставляем галерею
+// Подставляем галерею
+const galleryDiv = document.getElementById("article-gallery");
+const galleryArr = Array.isArray(article.Gallery) ? article.Gallery : [];
+if (galleryArr.length) {
+  galleryDiv.innerHTML = galleryArr.map(g => {
+    const url = posterUrl(g, "http://static.photos/books/640x960/placeholder.png");
+    return `<img src="${url}" alt="" class="w-32 h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition hover:scale-105">`;
+  }).join("");
+} else {
+  galleryDiv.innerHTML = "";
+}
+
+if (article.article_category) {
+  loadSimilarArticles(article.id, article.article_category);
+}
+
+    } catch (err) {
+      console.error("Ошибка загрузки статьи:", err);
+    }
+  }
+
+</script>
+<script>
+  const API = "http://localhost:1337";
+
+  // Превращаем Strapi Rich Text (Blocks) -> HTML абзацы
+  function blocksToHtml(blocks) {
+    if (!Array.isArray(blocks)) return "";
+    const paras = blocks
+      .map(b => (Array.isArray(b.children) ? b.children.map(c => c.text || "").join("") : ""))
+      .filter(Boolean);
+    return paras.map(t => `<p class="mb-4">${t}</p>`).join("");
+  }
+
+  // Аккуратный фоллбек постера
+  function normalizeMedia(m) {
+    if (!m) return null;
+    if (Array.isArray(m)) m = m[0] || null;
+    if (!m) return null;
+
+    if (m.url || m.formats) return m;
+    if (m.data) {
+      const d = Array.isArray(m.data) ? m.data[0] : m.data;
+      if (!d) return null;
+      return d.attributes ? d.attributes : d;
+    }
+    if (m.attributes) return m.attributes;
+    return null;
+  }
+
+  function posterUrl(media, placeholder) {
+    const m = normalizeMedia(media);
+    const url =
+      m?.formats?.medium?.url ||
+      m?.formats?.small?.url ||
+      m?.formats?.thumbnail?.url ||
+      m?.url;
+
+    if (!url) return placeholder;
+    return url.startsWith("http") ? url : API + url;
+  }
+
+  // Рендер одной карточки
+  function renderCard(item, opts) {
+    // 🎵 Если это музыка
+    if (opts.key === "music") {
+      const img = posterUrl(item?.poster, opts.placeholder);
+      const title = item?.title || "Untitled Album";
+      return `
+        <div class="flex flex-col items-center">
+          <img src="${img}" alt="${title}" 
+               class="w-full max-w-[200px] h-auto object-cover rounded-lg shadow">
+          <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">${title}</h3>
+          <div class="flex gap-2">
+            ${
+              item.spotifyLink
+                ? `<a href="${item.spotifyLink}" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                     <i data-feather="music" class="inline mr-1"></i> Spotify
+                   </a>`
+                : ""
+            }
+            ${
+              item.appleLink
+                ? `<a href="${item.appleLink}" target="_blank" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
+                     <i data-feather="headphones" class="inline mr-1"></i> Apple Music
+                   </a>`
+                : ""
+            }
+          </div>
+        </div>
+      `;
+    }
+
+    // 📚 Общая обработка для остальных карточек
+    const title = item?.title || "";
+    const descHtml = blocksToHtml(item?.description || []);
+    const spoilerHtml = blocksToHtml(item?.spoiler || []);
+    const link = item?.buyLink || "#";
+    const btn = item?.buttonLabel || opts.defaultBtn;
+    const img = posterUrl(item?.poster, opts.placeholder);
+
+    return `
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/3">
+          <img src="${img}" alt="${title}" class="w-48 h-72 object-cover rounded-lg shadow">
+        </div>
+
+        <div class="md:w-2/3">
+          <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">${title}</h3>
+          <div class="prose max-w-none text-gray-700 mb-6">${descHtml}</div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
+            <div class="flex items-start">
+              <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
+              <div>
+                <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
+                <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
+                <button
+                  class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center"
+                  onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Reveal Spoilers
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="spoiler-content bg-gray-100 rounded-lg mb-6">
+            ${spoilerHtml}
+          </div>
+
+          <a href="${link}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
+            ${btn}
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  async function loadSections() {
+    try {
+     const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const res = await fetch(
+  API +
+  "/api/articles" +
+  "?populate[books][populate]=poster" +
+  "&populate[moviesTvSeries][populate]=poster" +
+  "&populate[anime][populate]=poster" +
+  "&populate[games][populate]=poster" +
+  "&populate[music][populate]=poster"
+);
+const json = await res.json();
+
+// ищем статью по id или берём первую
+const article = json.data.find(a => a.id == id) || json.data[0];
+
+
+
+
+      const sections = [
+        { key: "books",          containerId: "books-cards",   defaultBtn: "Buy Now on Amazon", placeholder: "http://static.photos/books/640x960/1" },
+        { key: "moviesTvSeries", containerId: "movies-cards",  defaultBtn: "Watch on Netflix",  placeholder: "http://static.photos/movies/640x960/1" },
+        { key: "anime",          containerId: "anime-cards",   defaultBtn: "Watch on Crunchyroll", placeholder: "http://static.photos/anime/640x960/1" },
+        { key: "games",          containerId: "games-cards",   defaultBtn: "Get on Steam",      placeholder: "http://static.photos/games/640x960/1" },
+        { key: "music",          containerId: "music-cards",   defaultBtn: null,                placeholder: "http://static.photos/music/300x300/1" }
+      ];
+
+      sections.forEach(({ key, containerId, defaultBtn, placeholder }) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const items = Array.isArray(article[key]) ? article[key] : [];
+        if (!items.length) {
+          container.innerHTML = `<p class="text-gray-500">Пока пусто.</p>`;
+          return;
+        }
+
+        container.innerHTML = items
+          .map(item => renderCard(item, { defaultBtn, placeholder, key }))
+          .join("");
+
+        feather.replace();
+      });
+    } catch (e) {
+      console.error("Ошибка загрузки карточек:", e);
+    }
+  }
+
+  loadSections();
+</script>
+<script>
+  // ... тут твой второй скрипт (API, posterUrl, renderCard, loadSections)
+  loadSections();
+  loadArticle();   // ← ДОБАВИТЬ ЗДЕСЬ
+</script>
+<script>
+let searchArticlesCache = []; // кеш для поиска
+
+async function initSearch() {
+  try {
+    // Загружаем список статей
+    const res = await fetch(API + "/api/articles?populate=*");
+    const json = await res.json();
+    searchArticlesCache = json.data || [];
+
+    const input = document.querySelector(".search-input");
+    const suggestionsBox = document.getElementById("search-suggestions");
+    if (!input || !suggestionsBox) return;
+
+    // Обработка ввода
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase().trim();
+      suggestionsBox.innerHTML = "";
+
+      if (!query) {
+        suggestionsBox.classList.add("hidden");
+        return;
+      }
+
+      // фильтрация по заголовку
+      const matches = searchArticlesCache.filter(a => {
+        const title = a.Title?.toLowerCase() || "";
+        return title.startsWith(query) || 
+               title.split(" ").some(word => word.startsWith(query));
+      }).slice(0, 7);
+
+      if (!matches.length) {
+        suggestionsBox.classList.add("hidden");
+        return;
+      }
+
+      // показываем подсказки
+      matches.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "px-4 py-2 hover:bg-indigo-100 cursor-pointer";
+        div.textContent = a.Title;
+
+        div.addEventListener("click", () => {
+          window.location.href = `article.html?id=${a.id}`;
+        });
+
+        suggestionsBox.appendChild(div);
+      });
+
+      suggestionsBox.classList.remove("hidden");
+    });
+
+    // Enter → переход на index.html с query
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const query = input.value.trim();
+        if (query) {
+          window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+
+    // скрывать подсказки при клике вне поиска
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".relative")) {
+        suggestionsBox.classList.add("hidden");
+      }
+    });
+  } catch (err) {
+    console.error("Ошибка загрузки статей для поиска:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initSearch);
+</script>
+<script>
+const API_URL = "http://localhost:1337"; // поменяй на свой домен
+
+function extractMediaUrl(media) {
+  if (!media) return null;
+
+  // плоский объект (как у тебя)
+  if (media.url) return media.url;
+  if (media.formats?.large?.url) return media.formats.large.url;
+  if (media.formats?.medium?.url) return media.formats.medium.url;
+  if (media.formats?.small?.url) return media.formats.small.url;
+  if (media.formats?.thumbnail?.url) return media.formats.thumbnail.url;
+
+  // вложенный { data: { attributes } }
+  const a = media.data?.attributes;
+  if (a?.url) return a.url;
+  if (a?.formats?.large?.url) return a.formats.large.url;
+  if (a?.formats?.medium?.url) return a.formats.medium.url;
+  if (a?.formats?.small?.url) return a.formats.small.url;
+  if (a?.formats?.thumbnail?.url) return a.formats.thumbnail.url;
+
+  return null;
+}
+
+async function loadBackground() {
+  const bgDiv = document.getElementById("page-bg");
+  if (!bgDiv) return;
+
+  let bgUrl = null;
+
+  try {
+    const id = new URLSearchParams(window.location.search).get("id");
+
+    // если это страница статьи
+    if (id) {
+      const res = await fetch(`${API_URL}/api/articles/${id}?populate=articleBackground`);
+      const json = await res.json();
+
+      // ⚡ исправлено: json.data сразу содержит поля статьи
+      const article = json?.data || {};
+      const articleBg = extractMediaUrl(article.articleBackground);
+      if (articleBg) {
+        bgUrl = articleBg.startsWith("http") ? articleBg : `${API_URL}${articleBg}`;
+      }
+    }
+
+    // если articleBackground нет → дефолтный фон
+    if (!bgUrl) {
+      const themeRes = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
+      const themeJson = await themeRes.json();
+      const theme = themeJson?.data || {};
+      const themeBg = extractMediaUrl(theme.defaultBackground);
+      if (themeBg) {
+        bgUrl = themeBg.startsWith("http") ? themeBg : `${API_URL}${themeBg}`;
+      }
+    }
+
+    // применяем
+    if (bgUrl) {
+      bgDiv.style.backgroundImage = `url('${bgUrl}')`;
+      bgDiv.style.backgroundSize = "cover";
+      bgDiv.style.backgroundPosition = "center";
+    }
+  } catch (err) {
+    console.error("Ошибка загрузки фона:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadBackground);
+</script>
+<script>
+async function loadSimilarArticles(currentId, category) {
+  try {
+    const res = await fetch(
+      `${API_URL}/api/articles?filters[article_category][$eq]=${encodeURIComponent(category)}&filters[id][$ne]=${currentId}&pagination[limit]=4&populate=Cover`
+    );
+    const json = await res.json();
+    const articles = json.data || [];
+
+    const container = document.querySelector(".mt-16 .overflow-x-auto"); 
+    container.innerHTML = "";
+
+    if (!articles.length) {
+      container.innerHTML = "<p class='text-gray-500'>Нет похожих статей</p>";
+      return;
+    }
+
+    articles.forEach(a => {
+      const title = a.article_title || "Без названия";
+      const preview = a.article_preview?.[0]?.children?.[0]?.text || "";
+      const category = a.article_category || "General";
+
+      let coverUrl = "https://via.placeholder.com/320x180";
+      if (a.Cover?.url) {
+        coverUrl = a.Cover.url.startsWith("http") ? a.Cover.url : API_URL + a.Cover.url;
+      }
+
+      const card = `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px] recommendation-card">
+          <img src="${coverUrl}" alt="${title}" class="w-full h-32 object-cover">
+          <div class="p-3">
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2 py-0.5 rounded">${category}</span>
+            <h3 class="text-md font-bold heading-font text-gray-800 mt-2 mb-1">${title}</h3>
+            <p class="text-gray-600 text-xs mb-2">${preview}</p>
+            <a href="article.html?id=${a.id}" class="text-indigo-600 text-xs font-medium hover:text-indigo-800">Read More</a>
+          </div>
+        </div>
+      `;
+      container.innerHTML += card;
+    });
+  } catch (err) {
+    console.error("Ошибка загрузки похожих статей:", err);
+  }
+}
+</script>
+
 </body>
 </html>
