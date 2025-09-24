@@ -511,6 +511,69 @@ async function loadHeroSearchColors() {
 }
 document.addEventListener("DOMContentLoaded", loadHeroSearchColors);
 </script>
+<script>
+  const API_URL = "https://strapi-production-cb57.up.railway.app";
+
+  // Вспомогательная функция: достаём URL из объекта Strapi
+  function extractMediaUrl(media) {
+    if (!media) return null;
+    if (media.formats?.large?.url) return media.formats.large.url;
+    if (media.formats?.medium?.url) return media.formats.medium.url;
+    if (media.formats?.small?.url) return media.formats.small.url;
+    if (media.url) return media.url;
+    return null;
+  }
+</script>
+
+<script>
+  // Глобальный фон (defaultBackground)
+  async function loadBackground() {
+    const bgDiv = document.getElementById("page-bg");
+    if (!bgDiv) return;
+
+    try {
+      const res = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
+      const json = await res.json();
+      const theme = json?.data?.attributes || {};
+      const bgUrl = extractMediaUrl(theme.defaultBackground);
+
+      if (bgUrl) {
+        const fullUrl = bgUrl.startsWith("http") ? bgUrl : `${API_URL}${bgUrl}`;
+        bgDiv.style.backgroundImage = `url('${fullUrl}')`;
+        bgDiv.style.backgroundSize = "cover";
+        bgDiv.style.backgroundPosition = "center";
+      }
+    } catch (err) {
+      console.error("Ошибка загрузки defaultBackground:", err);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", loadBackground);
+</script>
+
+<script>
+  // Фон Hero (heroBackground)
+  async function loadHeroBackground() {
+    const heroDiv = document.getElementById("hero-bg");
+    if (!heroDiv) return;
+
+    try {
+      const res = await fetch(`${API_URL}/api/theme?populate=heroBackground`);
+      const json = await res.json();
+      const theme = json?.data?.attributes || {};
+      const heroBg = extractMediaUrl(theme.heroBackground);
+
+      if (heroBg) {
+        const fullUrl = heroBg.startsWith("http") ? heroBg : `${API_URL}${heroBg}`;
+        heroDiv.style.backgroundImage = `url('${fullUrl}')`;
+        heroDiv.style.backgroundSize = "cover";
+        heroDiv.style.backgroundPosition = "center";
+      }
+    } catch (err) {
+      console.error("Ошибка загрузки heroBackground:", err);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", loadHeroBackground);
+</script>
 
 
 </body>
