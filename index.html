@@ -253,6 +253,9 @@
 
     <script>AOS.init();</script>
     <script>feather.replace();</script>
+    <script>
+  const API_URL = "https://strapi-production-cb57.up.railway.app";
+</script>
 <script>
 let allArticles = []; // все статьи
 let activeCategory = "All"; // текущая категория
@@ -280,7 +283,7 @@ function applyFilters() {
   // фильтр по поиску (по началу слова)
   if (searchQuery) {
     filtered = filtered.filter(a => {
-      const title = a.article_title?.toLowerCase() || "";
+   const title = (a.Title || a.article_title || "").toLowerCase();
       return (
         title.startsWith(searchQuery) ||
         title.split(" ").some(word => word.startsWith(searchQuery))
@@ -301,8 +304,10 @@ function renderArticles(articles) {
   }
 
   articles.forEach(attrs => {
-    const title = attrs.article_title || "Без названия";
-    const preview = attrs.article_preview?.[0]?.children?.[0]?.text || "";
+  const title = attrs.Title || attrs.article_title || "Без названия";
+const preview = Array.isArray(attrs.article_preview)
+  ? (attrs.article_preview[0]?.children?.[0]?.text || "")
+  : "";
     const category = attrs.article_category || "General";
 
     let coverUrl = "https://via.placeholder.com/640x360";
@@ -371,9 +376,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-<script>
-const API_URL = "https://strapi-production-cb57.up.railway.app";
- замени на Railway или свой домен
 
 function extractMediaUrl(media) {
   if (!media) return null;
