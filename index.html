@@ -380,40 +380,43 @@ async function loadBackground() {
   const bgDiv = document.getElementById("page-bg");
   if (!bgDiv) return;
 
+  let bgUrl = null;
   try {
-    // всегда берём defaultBackground из Theme
-    const res = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
-    const json = await res.json();
+    const id = new URLSearchParams(window.location.search).get("id");
 
-    // у Strapi v4 данные лежат в data.attributes
-    const theme = json?.data?.attributes || json?.data || {};
-    const bg = theme.defaultBackground;
-
-    let bgUrl = null;
-
-    if (bg) {
-      // сначала смотрим форматы
-      bgUrl =
-        bg.formats?.large?.url ||
-        bg.formats?.medium?.url ||
-        bg.formats?.small?.url ||
-        bg.url;
+    // Если открыта статья — пробуем articleBackground
+    if (id) {
+      const res = await fetch(`${API_URL}/api/articles/${id}?populate=articleBackground`);
+      const json = await res.json();
+      const article = json?.data?.attributes || json?.data || {};
+      const articleBg = extractMediaUrl(article.articleBackground);
+      if (articleBg) {
+        bgUrl = articleBg.startsWith("http") ? articleBg : `${API_URL}${articleBg}`;
+      }
     }
 
-    if (bgUrl) {
-      if (!bgUrl.startsWith("http")) {
-        bgUrl = `${API_URL}${bgUrl}`;
+    // Если articleBackground нет → берём дефолтную тему
+    if (!bgUrl) {
+      const themeRes = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
+      const themeJson = await themeRes.json();
+      const theme = themeJson?.data?.attributes || themeJson?.data || {};
+      const themeBg = extractMediaUrl(theme.defaultBackground);
+      if (themeBg) {
+        bgUrl = themeBg.startsWith("http") ? themeBg : `${API_URL}${themeBg}`;
       }
+    }
+
+    // применяем фон
+    if (bgUrl) {
       bgDiv.style.backgroundImage = `url('${bgUrl}')`;
       bgDiv.style.backgroundSize = "cover";
       bgDiv.style.backgroundPosition = "center";
     }
   } catch (err) {
-    console.error("Ошибка загрузки defaultBackground:", err);
+    console.error("Ошибка загрузки фона:", err);
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadBackground);
 </script>
 
 <script>
