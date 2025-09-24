@@ -520,13 +520,9 @@ const id = params.get("id");
 
 const res = await fetch(
   API +
-  "/api/articles" +
-  "?populate[books][populate]=poster" +
-  "&populate[moviesTvSeries][populate]=poster" +
-  "&populate[anime][populate]=poster" +
-  "&populate[games][populate]=poster" +
-  "&populate[music][populate]=poster"
+  "/api/articles?populate[books][populate]=poster"
 );
+
 const json = await res.json();
 
 // ищем статью по id или берём первую
