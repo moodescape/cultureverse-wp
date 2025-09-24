@@ -422,7 +422,9 @@ async function loadBackground() {
       const themeRes = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
       const themeJson = await themeRes.json();
       const theme = themeJson?.data?.attributes || themeJson?.data || {};
-      const themeBg = extractMediaUrl(theme.defaultBackground);
+const defaultBg = theme.defaultBackground || themeJson?.data?.defaultBackground;
+const themeBg = extractMediaUrl(defaultBg);
+
       if (themeBg) {
         bgUrl = themeBg.startsWith("http") ? themeBg : `${API_URL}${themeBg}`;
       }
