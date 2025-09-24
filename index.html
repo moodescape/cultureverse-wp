@@ -260,7 +260,7 @@ let searchQuery = ""; // текущий текст поиска
 
 async function loadArticles() {
   try {
-    const response = await fetch("http://localhost:1337/api/articles?populate=*");
+   const response = await fetch(`${API_URL}/api/articles?populate=*`);
     const data = await response.json();
     allArticles = data.data; 
     applyFilters(); // применяем фильтры после загрузки
@@ -307,10 +307,10 @@ function renderArticles(articles) {
 
     let coverUrl = "https://via.placeholder.com/640x360";
     if (attrs.article_cover) {
-      if (attrs.article_cover.formats?.medium) coverUrl = `http://localhost:1337${attrs.article_cover.formats.medium.url}`;
-      else if (attrs.article_cover.formats?.small) coverUrl = `http://localhost:1337${attrs.article_cover.formats.small.url}`;
-      else if (attrs.article_cover.formats?.thumbnail) coverUrl = `http://localhost:1337${attrs.article_cover.formats.thumbnail.url}`;
-      else if (attrs.article_cover.url) coverUrl = `http://localhost:1337${attrs.article_cover.url}`;
+   if (attrs.article_cover.formats?.medium) coverUrl = `${API_URL}${attrs.article_cover.formats.medium.url}`;
+else if (attrs.article_cover.formats?.small) coverUrl = `${API_URL}${attrs.article_cover.formats.small.url}`;
+else if (attrs.article_cover.formats?.thumbnail) coverUrl = `${API_URL}${attrs.article_cover.formats.thumbnail.url}`;
+else if (attrs.article_cover.url) coverUrl = `${API_URL}${attrs.article_cover.url}`;
     }
 
     const card = `
@@ -371,7 +371,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 <script>
-const API_URL = "http://localhost:1337"; // замени на Railway или свой домен
+const API_URL = "https://strapi-production-cb57.up.railway.app";
+ замени на Railway или свой домен
 
 function extractMediaUrl(media) {
   if (!media) return null;
