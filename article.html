@@ -397,7 +397,7 @@ if (article.article_category) {
 
 </script>
 <script>
-  const API = "http://localhost:1337";
+ const API = "https://strapi-production-cb57.up.railway.app";
 
   // Превращаем Strapi Rich Text (Blocks) -> HTML абзацы
   function blocksToHtml(blocks) {
@@ -520,8 +520,14 @@ const id = params.get("id");
 
 const res = await fetch(
   API +
-  "/api/articles?populate[books][populate]=poster"
+  "/api/articles" +
+  "?populate[books][populate]=*" +
+  "&populate[moviesTvSeries][populate]=*" +
+  "&populate[anime][populate]=*" +
+  "&populate[games][populate]=*" +
+  "&populate[music][populate]=*"
 );
+
 
 const json = await res.json();
 
@@ -644,7 +650,7 @@ async function initSearch() {
 document.addEventListener("DOMContentLoaded", initSearch);
 </script>
 <script>
-const API_URL = "http://localhost:1337"; // поменяй на свой домен
+const API_URL = "https://strapi-production-cb57.up.railway.app";// поменяй на свой домен
 
 function extractMediaUrl(media) {
   if (!media) return null;
