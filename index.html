@@ -306,12 +306,13 @@ function renderArticles(articles) {
     const category = attrs.article_category || "General";
 
     let coverUrl = "https://via.placeholder.com/640x360";
-    if (attrs.article_cover) {
-   if (attrs.article_cover.formats?.medium) coverUrl = `${API_URL}${attrs.article_cover.formats.medium.url}`;
-else if (attrs.article_cover.formats?.small) coverUrl = `${API_URL}${attrs.article_cover.formats.small.url}`;
-else if (attrs.article_cover.formats?.thumbnail) coverUrl = `${API_URL}${attrs.article_cover.formats.thumbnail.url}`;
-else if (attrs.article_cover.url) coverUrl = `${API_URL}${attrs.article_cover.url}`;
-    }
+   if (attrs.Cover) {
+  if (attrs.Cover.formats?.medium) coverUrl = `${API_URL}${attrs.Cover.formats.medium.url}`;
+  else if (attrs.Cover.formats?.small) coverUrl = `${API_URL}${attrs.Cover.formats.small.url}`;
+  else if (attrs.Cover.formats?.thumbnail) coverUrl = `${API_URL}${attrs.Cover.formats.thumbnail.url}`;
+  else if (attrs.Cover.url) coverUrl = `${API_URL}${attrs.Cover.url}`;
+}
+
 
     const card = `
       <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up">
