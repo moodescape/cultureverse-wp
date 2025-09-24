@@ -447,18 +447,22 @@ async function loadHeroBackground() {
   if (!heroDiv) return;
 
   try {
-    const themeRes = await fetch(`${API_URL}/api/theme?populate=heroBackground`);
-    const themeJson = await themeRes.json();
-    const theme = themeJson?.data?.attributes || themeJson?.data || {};
-    const heroBg = extractMediaUrl(theme.heroBackground);
+    const res = await fetch(`${API_URL}/api/theme?populate=heroBackground`);
+    const json = await res.json();
+    const theme = json?.data || {};
+    const heroBg = theme.heroBackground;
 
     if (heroBg) {
-      const bgUrl = heroBg.startsWith("http") ? heroBg : `${API_URL}${heroBg}`;
-      heroDiv.style.backgroundImage = `url('${bgUrl}')`;
-      heroDiv.style.backgroundSize = "cover";
-      heroDiv.style.backgroundPosition = "center";
+      // Берём оптимальный размер
+      let bgUrl = heroBg.formats?.large?.url || heroBg.formats?.medium?.url || heroBg.url;
+      if (bgUrl) {
+        if (!bgUrl.startsWith("http")) bgUrl = `${API_URL}${bgUrl}`;
+        heroDiv.style.backgroundImage = `url('${bgUrl}')`;
+        heroDiv.style.backgroundSize = "cover";
+        heroDiv.style.backgroundPosition = "center";
+      }
     } else {
-      // если фон не задан → fallback градиент
+      // fallback: если нет картинки
       heroDiv.style.background = "linear-gradient(to right, #6366f1, #9333ea)";
     }
   } catch (err) {
@@ -467,6 +471,7 @@ async function loadHeroBackground() {
 }
 document.addEventListener("DOMContentLoaded", loadHeroBackground);
 </script>
+
 <script>
 async function loadHeroTextColors() {
   try {
