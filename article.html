@@ -344,7 +344,7 @@
    <script>
   async function loadArticle() {
     try {
-      const res = await fetch("http://localhost:1337/api/articles?populate=*");
+    const res = await fetch(`${API}/api/articles?populate=*`);
      const json = await res.json();
 const data = json?.data;
 
@@ -376,7 +376,7 @@ contentDiv.innerHTML = contentBlocks
 // Подставляем галерею
 // Подставляем галерею
 const galleryDiv = document.getElementById("article-gallery");
-const galleryArr = Array.isArray(article.Gallery) ? article.Gallery : [];
+const galleryArr = Array.isArray(article.gallery) ? article.gallery : [];
 if (galleryArr.length) {
   galleryDiv.innerHTML = galleryArr.map(g => {
     const url = posterUrl(g, "http://static.photos/books/640x960/placeholder.png");
