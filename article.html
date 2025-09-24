@@ -375,8 +375,12 @@ contentDiv.innerHTML = contentBlocks
 
 // Подставляем галерею
 // Подставляем галерею
+// Подставляем галерею
 const galleryDiv = document.getElementById("article-gallery");
-const galleryArr = Array.isArray(article.gallery) ? article.gallery : [];
+const galleryArr = Array.isArray(article.Gallery) ? article.Gallery 
+                  : Array.isArray(article.gallery) ? article.gallery 
+                  : [];
+
 if (galleryArr.length) {
   galleryDiv.innerHTML = galleryArr.map(g => {
     const url = posterUrl(g, "http://static.photos/books/640x960/placeholder.png");
@@ -385,6 +389,7 @@ if (galleryArr.length) {
 } else {
   galleryDiv.innerHTML = "";
 }
+
 
 if (article.article_category) {
   loadSimilarArticles(article.id, article.article_category);
