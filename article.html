@@ -52,9 +52,27 @@
             transform: translateY(-3px);
         }
 
-/* 📱 Фикс мобильного отображения карточек */
+        /* 📱 Фикс мобильного сужения */
 @media (max-width: 768px) {
-  /* Общий контейнер секций */
+  /* Убираем горизонтальную прокрутку */
+  .mt-16 .relative .flex {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Карточки на всю ширину */
+  .mt-16 .recommendation-card,
+  .mt-16 .bg-white.rounded-lg.shadow-md {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+/* 📱 Фикс карточек только на телефоне */
+@media (max-width: 768px) {
+  /* Контентные секции (Books, Movies, Anime, Games, Music) */
   #books-cards,
   #movies-cards,
   #anime-cards,
@@ -64,12 +82,13 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 1rem; /* ровные боковые отступы */
+    padding: 0 16px; /* одинаковые отступы слева/справа */
     box-sizing: border-box;
   }
 
-  /* Карточки внутри секций */
+  /* Каждая карточка внутри секций */
   #books-cards > div,
   #movies-cards > div,
   #anime-cards > div,
@@ -79,22 +98,10 @@
     max-width: 100% !important;
   }
 
-  /* Изображения — растягиваем на всю ширину карточки */
-  #books-cards img,
-  #movies-cards img,
-  #anime-cards img,
-  #games-cards img,
-  #music-cards img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Белые блоки с тенями */
+  /* Фикс белых блоков, чтобы не налезали */
   .bg-white.rounded-xl.shadow-lg {
+    margin-bottom: 24px;
     width: 100% !important;
-    margin: 0 auto 24px auto;
   }
 }
     </style>
@@ -534,85 +541,31 @@ if (article.article_category) {
     const img = posterUrl(item?.poster, opts.placeholder);
 
     return `
-    function renderCard(item, opts) {
-  // 🎵 Если это музыка
-  if (opts.key === "music") {
-    const img = posterUrl(item?.poster, opts.placeholder);
-    const title = item?.title || "Untitled Album";
-    return `
-      <div class="flex flex-col items-center">
-        <img src="${img}" alt="${title}" 
-             class="w-full h-auto object-cover rounded-lg shadow">
-        <h3 class="text-lg font-bold heading-font text-gray-800 mt-4 mb-2">${title}</h3>
-        <div class="flex gap-2">
-          ${
-            item.spotifyLink
-              ? `<a href="${item.spotifyLink}" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                   <i data-feather="music" class="inline mr-1"></i> Spotify
-                 </a>`
-              : ""
-          }
-          ${
-            item.appleLink
-              ? `<a href="${item.appleLink}" target="_blank" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                   <i data-feather="headphones" class="inline mr-1"></i> Apple Music
-                 </a>`
-              : ""
-          }
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/3">
+          <img src="${img}" alt="${title}" class="w-48 h-72 object-cover rounded-lg shadow">
         </div>
-      </div>
-    `;
-  }
 
-  // 📚 Общая обработка для остальных карточек
-  const title = item?.title || "";
-  const descHtml = blocksToHtml(item?.description || []);
-  const spoilerHtml = blocksToHtml(item?.spoiler || []);
-  const link = item?.buyLink || "#";
-  const btn = item?.buttonLabel || opts.defaultBtn;
-  const img = posterUrl(item?.poster, opts.placeholder);
+        <div class="md:w-2/3">
+          <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">${title}</h3>
+          <div class="prose max-w-none text-gray-700 mb-6">${descHtml}</div>
 
-  return `
-    <div class="flex flex-col md:flex-row gap-8">
-      <!-- Постер -->
-      <div class="w-full md:w-1/3">
-        <img src="${img}" alt="${title}" 
-             class="w-full h-auto md:w-48 md:h-72 object-cover rounded-lg shadow mx-auto">
-      </div>
-
-      <!-- Текстовый блок -->
-      <div class="w-full md:w-2/3">
-        <h3 class="text-xl font-bold heading-font text-gray-800 mb-4">${title}</h3>
-        <div class="prose max-w-none text-gray-700 mb-6">${descHtml}</div>
-
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
-          <div class="flex items-start">
-            <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
-            <div>
-              <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
-              <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
-              <button
-                class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center"
-                onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                Reveal Spoilers
-              </button>
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg mb-6">
+            <div class="flex items-start">
+              <i data-feather="eye-off" class="text-yellow-500 mr-3 mt-1"></i>
+              <div>
+                <h3 class="font-bold text-yellow-800 text-lg mb-2">Spoiler Alert</h3>
+                <p class="text-yellow-700 mb-3">This section contains spoilers - open at your own risk.</p>
+                <button
+                  class="spoiler-toggle bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center"
+                  onclick="this.closest('.bg-yellow-50').nextElementSibling.classList.toggle('revealed'); this.querySelector('svg').setAttribute('data-feather', this.closest('.bg-yellow-50').nextElementSibling.classList.contains('revealed') ? 'eye-off' : 'eye'); feather.replace();">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye mr-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Reveal Spoilers
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="spoiler-content bg-gray-100 rounded-lg mb-6">
-          ${spoilerHtml}
-        </div>
-
-        <a href="${link}" target="_blank" 
-           class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium">
-          ${btn}
-        </a>
-      </div>
-    </div>
-  `;
-}
           <div class="spoiler-content bg-gray-100 rounded-lg mb-6">
             ${spoilerHtml}
           </div>
