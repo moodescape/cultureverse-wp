@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
+       <style>
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -50,6 +50,28 @@
         }
         .recommendation-card:hover {
             transform: translateY(-3px);
+        }
+
+        /* 📱 Фикс мобильного сужения */
+        @media (max-width: 768px) {
+          .article-card,
+          .bg-white.rounded-xl.shadow-lg,
+          .bg-white.rounded-lg.shadow-md {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+
+          .mt-16 .overflow-x-auto {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
+
+          .mt-16 .recommendation-card {
+            flex: 1 1 calc(50% - 1rem);
+            min-width: 150px;
+            max-width: 100%;
+          }
         }
     </style>
 </head>
