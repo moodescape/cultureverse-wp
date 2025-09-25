@@ -62,21 +62,13 @@
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     
-    <!-- Левая часть: бургер + логотип -->
-    <div class="flex items-center space-x-3">
-      <!-- Гамбургер (только мобилка) -->
-      <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
-        <i data-feather="menu"></i>
-      </button>
-
-      <!-- Лого -->
-      <a href="index.html" class="flex items-center space-x-2">
-        <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
-          <i data-feather="book-open" class="text-white"></i>
-        </div>
-        <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
-      </a>
-    </div>
+    <!-- Лого -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+        <i data-feather="book-open" class="text-white"></i>
+      </div>
+      <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
+    </a>
 
     <!-- Категории (только на ПК) -->
     <nav class="hidden md:flex space-x-8" id="category-nav">
@@ -97,6 +89,12 @@
         <i data-feather="search" class="absolute left-3 top-2.5 text-gray-400"></i>
       </div>
     </div>
+
+    <!-- Гамбургер (только на мобилке, теперь справа) -->
+    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none ml-4">
+      <i data-feather="menu"></i>
+    </button>
+
   </div>
 
   <!-- Выпадающее меню категорий (только мобилка) -->
