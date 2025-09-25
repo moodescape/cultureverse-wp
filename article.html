@@ -53,26 +53,24 @@
         }
 
         /* 📱 Фикс мобильного сужения */
-        @media (max-width: 768px) {
-          .article-card,
-          .bg-white.rounded-xl.shadow-lg,
-          .bg-white.rounded-lg.shadow-md {
-            width: 100% !important;
-            max-width: 100% !important;
-          }
+@media (max-width: 768px) {
+  /* Убираем горизонтальную прокрутку */
+  .mt-16 .relative .flex {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
 
-          .mt-16 .overflow-x-auto {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-          }
+  /* Карточки на всю ширину */
+  .mt-16 .recommendation-card,
+  .mt-16 .bg-white.rounded-lg.shadow-md {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 
-          .mt-16 .recommendation-card {
-            flex: 1 1 calc(50% - 1rem);
-            min-width: 150px;
-            max-width: 100%;
-          }
-        }
     </style>
 </head>
 <body class="bg-gray-50 relative">
