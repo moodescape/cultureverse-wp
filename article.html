@@ -70,7 +70,40 @@
     max-width: 100% !important;
   }
 }
+/* 📱 Фикс карточек только на телефоне */
+@media (max-width: 768px) {
+  /* Контентные секции (Books, Movies, Anime, Games, Music) */
+  #books-cards,
+  #movies-cards,
+  #anime-cards,
+  #games-cards,
+  #music-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px; /* одинаковые отступы слева/справа */
+    box-sizing: border-box;
+  }
 
+  /* Каждая карточка внутри секций */
+  #books-cards > div,
+  #movies-cards > div,
+  #anime-cards > div,
+  #games-cards > div,
+  #music-cards > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Фикс белых блоков, чтобы не налезали */
+  .bg-white.rounded-xl.shadow-lg {
+    margin-bottom: 24px;
+    width: 100% !important;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
