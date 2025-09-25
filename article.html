@@ -54,13 +54,25 @@
 
         /* 📱 Фикс мобильного сужения */
 @media (max-width: 768px) {
-  /* Убираем горизонтальную прокрутку */
-  .mt-16 .relative .flex {
-    flex-direction: column;
-    overflow-x: visible;
+  /* сам контейнер с карточками */
+  .mt-16 .relative > .flex {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr; /* две карточки в ряд */
     gap: 1rem;
-    padding: 0;
-    margin: 0;
+    overflow-x: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* сами карточки */
+  .mt-16 .recommendation-card,
+  .mt-16 .bg-white.rounded-lg.shadow-md {
+    min-width: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
   }
 
   /* Карточки на всю ширину */
