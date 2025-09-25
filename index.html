@@ -59,20 +59,24 @@
 <div class="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-gray-50"></div>
 
     <!-- Header -->
- <header class="bg-white shadow-sm sticky top-0 z-50">
+<header class="bg-white shadow-sm sticky top-0 z-50">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Лого -->
-    <a href="index.html" class="flex items-center space-x-2">
-      <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
-        <i data-feather="book-open" class="text-white"></i>
-      </div>
-      <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
-    </a>
+    
+    <!-- Левая часть: бургер + логотип -->
+    <div class="flex items-center space-x-3">
+      <!-- Гамбургер (только мобилка) -->
+      <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+        <i data-feather="menu"></i>
+      </button>
 
-    <!-- Гамбургер (только на мобилке) -->
-    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
-      <i data-feather="menu"></i>
-    </button>
+      <!-- Лого -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+          <i data-feather="book-open" class="text-white"></i>
+        </div>
+        <h1 class="text-2xl font-bold heading-font text-gray-800">CultureVerse</h1>
+      </a>
+    </div>
 
     <!-- Категории (только на ПК) -->
     <nav class="hidden md:flex space-x-8" id="category-nav">
@@ -84,8 +88,8 @@
       <button data-category="Games" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Games</button>
     </nav>
 
-    <!-- Поиск -->
-    <div class="flex items-center space-x-4 w-full md:w-auto">
+    <!-- Поиск (только на ПК) -->
+    <div class="hidden md:flex items-center space-x-4 w-full md:w-auto">
       <div class="relative w-full">
         <input type="text" placeholder="Search articles..."
           class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 
@@ -105,7 +109,6 @@
     <button data-category="Games" class="block w-full text-left category-btn text-gray-600 hover:text-indigo-600 font-medium">Games</button>
   </div>
 </header>
-
 
     <!-- Hero Section -->
    <!-- Hero Section -->
