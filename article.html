@@ -51,10 +51,23 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
-          /* 🚧 Тест перекраски белых подложек */
-.bg-white.rounded-xl.shadow-lg.overflow-hidden {
-  background: #ffe680 !important;  /* жёлтый фон вместо белого */
-  border: 3px dashed red !important;
+       /* 📱 Мобильная версия — убираем все подложки кроме последней */
+@media (max-width: 768px) {
+  /* Сначала скрываем все */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg.overflow-hidden {
+    display: none;
+  }
+
+  /* Показываем только последнюю */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg.overflow-hidden:last-of-type {
+    display: block;
+    width: 100% !important;
+  }
+
+  /* Растягиваем контент по ширине */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg.overflow-hidden:last-of-type .p-6 {
+    padding: 1rem !important;
+  }
 }
     </style>
 </head>
