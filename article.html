@@ -52,27 +52,9 @@
             transform: translateY(-3px);
         }
 
-        /* 📱 Фикс мобильного сужения */
+/* 📱 Фикс мобильного отображения карточек */
 @media (max-width: 768px) {
-  /* Убираем горизонтальную прокрутку */
-  .mt-16 .relative .flex {
-    flex-direction: column;
-    overflow-x: visible;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-  }
-
-  /* Карточки на всю ширину */
-  .mt-16 .recommendation-card,
-  .mt-16 .bg-white.rounded-lg.shadow-md {
-    min-width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-/* 📱 Фикс карточек только на телефоне */
-@media (max-width: 768px) {
-  /* Контентные секции (Books, Movies, Anime, Games, Music) */
+  /* Общий контейнер секций */
   #books-cards,
   #movies-cards,
   #anime-cards,
@@ -82,13 +64,12 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
-    padding: 0 16px; /* одинаковые отступы слева/справа */
+    padding: 0 1rem; /* ровные боковые отступы */
     box-sizing: border-box;
   }
 
-  /* Каждая карточка внутри секций */
+  /* Карточки внутри секций */
   #books-cards > div,
   #movies-cards > div,
   #anime-cards > div,
@@ -98,10 +79,22 @@
     max-width: 100% !important;
   }
 
-  /* Фикс белых блоков, чтобы не налезали */
-  .bg-white.rounded-xl.shadow-lg {
-    margin-bottom: 24px;
+  /* Изображения — растягиваем на всю ширину карточки */
+  #books-cards img,
+  #movies-cards img,
+  #anime-cards img,
+  #games-cards img,
+  #music-cards img {
     width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Белые блоки с тенями */
+  .bg-white.rounded-xl.shadow-lg {
+    width: 100% !important;
+    margin: 0 auto 24px auto;
   }
 }
     </style>
