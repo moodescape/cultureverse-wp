@@ -51,20 +51,14 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
- /* 📱 Мобильная версия — все блоки на всю ширину */
+/* 📱 Мобильная версия — убираем подложки */
 @media (max-width: 768px) {
-  /* Делаем все секции фулл-шириной */
   .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* Контент внутри тоже на всю ширину */
-  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden .p-6 {
-    padding: 1rem !important;
+    box-shadow: none !important;   /* убираем тень */
+    border-radius: 0 !important;   /* убираем скругления */
   }
 }
+
     </style>
 </head>
 <body class="bg-gray-50 relative">
