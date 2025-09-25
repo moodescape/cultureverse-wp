@@ -51,14 +51,28 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
-/* 📱 Мобильная версия — убираем подложки */
+/* 📱 Мобильная версия — растягиваем текст и контент */
 @media (max-width: 768px) {
+  /* Все подложки тянем на всю ширину */
   .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden {
-    box-shadow: none !important;   /* убираем тень */
-    border-radius: 0 !important;   /* убираем скругления */
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Внутренние контейнеры растягиваем */
+  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden .p-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100% !important;
+  }
+
+  /* Сам текстовый контент тоже на всю ширину */
+  .space-y-12 .prose,
+  .space-y-12 .text-gray-700,
+  .space-y-12 .heading-font {
+    max-width: 100% !important;
   }
 }
-
     </style>
 </head>
 <body class="bg-gray-50 relative">
