@@ -51,14 +51,25 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
- /* 📱 Мобильная версия — убираем все подложки кроме последней */
+ /* 📱 Мобильная версия — показываем только последнюю подложку */
 @media (max-width: 768px) {
-  /* Тест: красим все белые подложки в красный */
+  /* Скрываем все подложки */
   .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden {
-    background: red !important;
+    display: none !important;
+  }
+
+  /* Показываем только последнюю */
+  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden:last-of-type {
+    display: block !important;
+    width: 100% !important;
+    background: white !important; /* возвращаем белый фон */
+  }
+
+  /* Контент внутри — на всю ширину */
+  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden:last-of-type .p-6 {
+    padding: 1rem !important;
   }
 }
-
     </style>
 </head>
 <body class="bg-gray-50 relative">
