@@ -51,6 +51,26 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
+           /* Только для мобильных (экраны до 768px) */
+@media (max-width: 768px) {
+  /* Контейнер похожих статей в одну колонку */
+  .mt-16 .grid {
+    display: block !important;
+  }
+
+  /* Каждая карточка занимает всю ширину */
+  .mt-16 .grid > div {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Убираем «наслойку» (тени и позиционирование) */
+  .mt-16 .grid > div {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
