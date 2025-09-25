@@ -271,7 +271,15 @@
         </div>
     </footer>
 
-   <script>AOS.init();</script>
+    <script>
+  if (window.innerWidth >= 768) {
+    // ПК и планшеты — анимация включена
+    AOS.init();
+  } else {
+    // Телефон — анимация отключена
+    AOS.init({ disable: true });
+  }
+</script>
     <script>feather.replace();</script>
     <script>
   const API_URL = "https://strapi-production-cb57.up.railway.app";
@@ -341,29 +349,24 @@ if (attrs.article_cover) {
 
 
     const card = `
- const isMobile = window.innerWidth < 768; // true если телефон
-
-const card = `
-  <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" 
-       ${isMobile ? "" : 'data-aos="fade-up"'}>
-    <img src="${coverUrl}" alt="${title}" class="w-full h-48 object-cover">
-    <div class="p-6">
-      <div class="flex justify-between items-start mb-3">
-        <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">${category}</span>
-        <span class="text-gray-500 text-sm">${new Date(attrs.createdAt).toLocaleDateString()}</span>
+      <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up">
+        <img src="${coverUrl}" alt="${title}" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-3">
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">${category}</span>
+            <span class="text-gray-500 text-sm">${new Date(attrs.createdAt).toLocaleDateString()}</span>
+          </div>
+          <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">${title}</h3>
+          <p class="text-gray-600 mb-4">${preview}</p>
+          <a href="article.html?id=${attrs.id}" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="feather feather-play mr-2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Play
+          </a>
+        </div>
       </div>
-      <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">${title}</h3>
-      <p class="text-gray-600 mb-4">${preview}</p>
-      <a href="article.html?id=${attrs.id}" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="feather feather-play mr-2">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-        Play
-      </a>
-    </div>
-  </div>
-`;
-
+    `;
     container.innerHTML += card;
   });
 }
@@ -558,7 +561,5 @@ document.addEventListener("DOMContentLoaded", loadHeroSearchColors);
     }
   });
 </script>
-
-
 </body>
 </html>
