@@ -52,37 +52,31 @@
             transform: translateY(-3px);
         }
 
-        /* 📱 Фикс мобильного сужения */
+      /* 📱 Фикс ширины блоков на мобилке */
 @media (max-width: 768px) {
-  /* сам контейнер с карточками */
+  /* Делаем ширину секций такой же, как у верхнего блока */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    width: 95% !important;  /* одинаково с Onyx Storm */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Similar Articles — без прокрутки и наслоения */
   .mt-16 .relative > .flex {
     display: grid !important;
-    grid-template-columns: 1fr 1fr; /* две карточки в ряд */
-    gap: 1rem;
-    overflow-x: visible !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    grid-template-columns: 1fr; /* одна колонка */
+    gap: 1rem !important;
+    overflow: visible !important;
+    margin: 0 auto !important;
+    max-width: 95% !important; /* ровно как секции выше */
   }
 
-  /* сами карточки */
-  .mt-16 .recommendation-card,
-  .mt-16 .bg-white.rounded-lg.shadow-md {
+  .mt-16 .recommendation-card {
+    width: 100% !important;
     min-width: auto !important;
     max-width: 100% !important;
-    width: 100% !important;
   }
 }
-
-  }
-
-  /* Карточки на всю ширину */
-  .mt-16 .recommendation-card,
-  .mt-16 .bg-white.rounded-lg.shadow-md {
-    min-width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
     </style>
 </head>
 <body class="bg-gray-50 relative">
