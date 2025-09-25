@@ -51,6 +51,21 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
+           /* 📱 Мобильная версия — все блоки на всю ширину */
+@media (max-width: 768px) {
+  /* Делаем все секции фулл-шириной */
+  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Контент внутри тоже на всю ширину */
+  .space-y-12 .bg-white.rounded-xl.shadow-lg.overflow-hidden .p-6 {
+    padding: 1rem !important;
+  }
+}
+
 /* 📱 Мобильная версия — растягиваем текст и контент */
 @media (max-width: 768px) {
   /* Все подложки тянем на всю ширину */
