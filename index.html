@@ -68,17 +68,37 @@
                 <h1 class="text-2xl font-bold heading-font text-gray-800 hovered-element">CultureVerse</h1>
             </a>
             
-            <nav class="hidden md:flex space-x-8" id="category-nav">
-    <button data-category="All" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">All</button>
-    <button data-category="Books" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Books</button>
-    <button data-category="Movies" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Movies</button>
-    <button data-category="Series" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Series</button>
-    <button data-category="Anime" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Anime</button>
-    <button data-category="Games" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Games</button>
+        <!-- Категории (Desktop) -->
+<nav class="hidden md:flex space-x-8" id="category-nav">
+  <button data-category="All" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">All</button>
+  <button data-category="Books" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Books</button>
+  <button data-category="Movies" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Movies</button>
+  <button data-category="Series" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Series</button>
+  <button data-category="Anime" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Anime</button>
+  <button data-category="Games" class="category-btn text-gray-600 hover:text-indigo-600 font-medium">Games</button>
 </nav>
 
-            
-            <div class="flex items-center space-x-4 w-full md:w-auto">
+<!-- Гамбургер (Mobile) -->
+<div class="md:hidden">
+  <button id="menu-toggle" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Выпадающее меню (Mobile) -->
+<div id="mobile-menu" class="hidden flex-col space-y-2 mt-4 md:hidden">
+  <button data-category="All" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">All</button>
+  <button data-category="Books" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">Books</button>
+  <button data-category="Movies" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">Movies</button>
+  <button data-category="Series" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">Series</button>
+  <button data-category="Anime" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">Anime</button>
+  <button data-category="Games" class="category-btn text-gray-600 hover:text-indigo-600 font-medium text-left">Games</button>
+</div>
+
+<!-- Поиск -->
+<div class="flex items-center space-x-4 w-full md:w-auto">
   <div class="relative w-full">
     <input type="text" placeholder="Search articles..." 
            class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 
@@ -87,8 +107,7 @@
     <div class="suggestions absolute bg-white border border-gray-200 mt-1 w-full rounded-md shadow-lg z-50 hidden"></div>
   </div>
 </div>
-        </div>
-    </header>
+
 
     <!-- Hero Section -->
    <!-- Hero Section -->
@@ -523,7 +542,18 @@ async function loadHeroSearchColors() {
 }
 document.addEventListener("DOMContentLoaded", loadHeroSearchColors);
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
 
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+});
+</script>
 
 </body>
 </html>
