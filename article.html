@@ -51,6 +51,26 @@
         .recommendation-card:hover {
             transform: translateY(-3px);
         }
+
+        /* 📱 Фикс мобильного сужения */
+@media (max-width: 768px) {
+  /* Убираем горизонтальную прокрутку */
+  .mt-16 .relative .flex {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Карточки на всю ширину */
+  .mt-16 .recommendation-card,
+  .mt-16 .bg-white.rounded-lg.shadow-md {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
     </style>
 </head>
 <body class="bg-gray-50 relative">
@@ -117,8 +137,11 @@
                 </div>
             </div>
 
-       <!-- Article Body -->
-<div class="px-0 md:px-8 py-8">
+            <!-- Divider -->
+            <div class="border-t border-gray-200 my-12"></div>
+                
+                <!-- Article Body -->
+                <div class="p-8">
                     
                     <!-- Spoiler Section -->
                     
@@ -164,10 +187,10 @@
             <!-- Similar Articles -->
             <div class="mt-16">
                 <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Similar Articles</h2>
-             <div class="relative">
-  <div class="grid grid-cols-1 gap-4 md:flex md:overflow-x-auto md:gap-4 md:-mx-4 md:px-4 scroll-smooth">
+                <div class="relative">
+                    <div class="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 scroll-smooth">
                     <!-- Similar Article 1 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden md:min-w-[250px]">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px]">
                         <img src="http://static.photos/books/320x180/2" alt="Similar Article" class="w-full h-32 object-cover">
                         <div class="p-3">
                             <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2 py-0.5 rounded">Books</span>
@@ -178,7 +201,7 @@
                     </div>
 
                     <!-- Similar Article 2 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden md:min-w-[250px]">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px]">
                         <img src="http://static.photos/movies/320x180/3" alt="Similar Article" class="w-full h-32 object-cover">
                         <div class="p-3">
                             <span class="bg-red-100 text-red-800 text-xs font-semibold px-2 py-0.5 rounded">Movies</span>
@@ -189,7 +212,7 @@
                     </div>
 
                     <!-- Similar Article 3 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden md:min-w-[250px]">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px]">
                         <img src="http://static.photos/anime/320x180/4" alt="Similar Article" class="w-full h-32 object-cover">
                         <div class="p-3">
                             <span class="bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-0.5 rounded">Anime</span>
@@ -200,7 +223,7 @@
                     </div>
 
                     <!-- Similar Article 4 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden md:min-w-[250px]">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px]">
                         <img src="http://static.photos/games/320x180/5" alt="Similar Article" class="w-full h-32 object-cover">
                         <div class="p-3">
                             <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded">Games</span>
@@ -211,7 +234,7 @@
                     </div>
 
                     <!-- Similar Article 5 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden md:min-w-[250px]">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden min-w-[250px]">
                         <img src="http://static.photos/series/320x180/6" alt="Similar Article" class="w-full h-32 object-cover">
                         <div class="p-3">
                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">Series</span>
