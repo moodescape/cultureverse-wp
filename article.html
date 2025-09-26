@@ -67,30 +67,65 @@
     padding: 0 !important; /* убираем внутренние паддинги */
   }
 }
-           @media (max-width: 768px) {
-  /* Выровнять все секции по ширине */
-  .space-y-12 > div {
-    width: calc(100% - 2rem) !important; /* как зелёная книга */
-    margin-left: auto;
-    margin-right: auto;
+    @media (max-width: 768px) {
+  /* Books */
+  #books-cards {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
   }
 
-  /* Убираем ограничение у текста */
-  .space-y-12 .prose {
+  /* Movies */
+  #movies-cards {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Anime */
+  #anime-cards {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Games */
+  #games-cards {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Music */
+  #music-cards {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Внутри текст и спойлеры тоже ровняем */
+  #books-cards .prose,
+  #movies-cards .prose,
+  #anime-cards .prose,
+  #games-cards .prose {
     max-width: 100% !important;
   }
 
-  /* Спойлер секция по ширине */
-  .space-y-12 .bg-yellow-50,
-  .space-y-12 .spoiler-content {
+  #books-cards .bg-yellow-50,
+  #movies-cards .bg-yellow-50,
+  #anime-cards .bg-yellow-50,
+  #games-cards .bg-yellow-50 {
     width: 100% !important;
     box-sizing: border-box;
   }
 
-  /* Кнопки тоже растянуть */
-  .space-y-12 a,
-  .space-y-12 button {
-    max-width: 100% !important;
+  #books-cards a,
+  #movies-cards a,
+  #anime-cards a,
+  #games-cards a {
+    display: block;
+    width: 100% !important;
+    text-align: center;
   }
 }
     </style>
