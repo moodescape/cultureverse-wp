@@ -145,6 +145,15 @@
     box-sizing: border-box;
   }
 }
+           /* 📱 Выравнивание Books и остальных секций по ширине верхнего блока */
+@media (max-width: 768px) {
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    width: calc(100% - 2rem) !important; /* как у верхнего блока */
+    max-width: calc(100% - 2rem) !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
