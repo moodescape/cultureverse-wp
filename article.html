@@ -170,6 +170,23 @@
     padding-right: 0 !important;
   }
 }
+           /* 📱 Растягиваем секции Books/Movies/Anime/Games/Music как верхний блок */
+@media (max-width: 768px) {
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    width: 100%;
+    margin: 0 auto 24px auto;
+    padding-left: 1rem;  /* такие же отступы как у красной карточки */
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* убираем двойные паддинги у .p-6 внутри */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg > .p-6 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
     </style>
 </head>
 <body class="bg-gray-50 relative">
