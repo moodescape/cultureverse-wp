@@ -67,6 +67,32 @@
     padding: 0 !important; /* убираем внутренние паддинги */
   }
 }
+           @media (max-width: 768px) {
+  /* Выровнять все секции по ширине */
+  .space-y-12 > div {
+    width: calc(100% - 2rem) !important; /* как зелёная книга */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Убираем ограничение у текста */
+  .space-y-12 .prose {
+    max-width: 100% !important;
+  }
+
+  /* Спойлер секция по ширине */
+  .space-y-12 .bg-yellow-50,
+  .space-y-12 .spoiler-content {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Кнопки тоже растянуть */
+  .space-y-12 a,
+  .space-y-12 button {
+    max-width: 100% !important;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
