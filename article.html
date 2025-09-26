@@ -67,6 +67,15 @@
     padding: 0 !important; /* убираем внутренние паддинги */
   }
 }
+           /* Фикс выезда белого блока на мобилках */
+body, html {
+  overflow-x: hidden; /* убираем горизонтальный скролл */
+}
+
+.bg-white.rounded-xl.shadow-lg {
+  max-width: 100% !important; /* не шире экрана */
+  box-sizing: border-box;      /* учитываем паддинги внутрь */
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
