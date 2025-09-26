@@ -154,6 +154,22 @@
     margin-right: auto;
   }
 }
+           /* 📱 Выравнивание ширины всех секций под верхний блок */
+@media (max-width: 768px) {
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    width: calc(100% - 2rem) !important; /* как верхний блок */
+    max-width: calc(100% - 2rem) !important;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  /* Внутренние отступы такие же как у верхнего блока */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg > .p-6 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
