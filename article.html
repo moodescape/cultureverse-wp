@@ -67,67 +67,6 @@
     padding: 0 !important; /* убираем внутренние паддинги */
   }
 }
-    @media (max-width: 768px) {
-  /* Books */
-  #books-cards {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Movies */
-  #movies-cards {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Anime */
-  #anime-cards {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Games */
-  #games-cards {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Music */
-  #music-cards {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto;
-  }
-
-  /* Внутри текст и спойлеры тоже ровняем */
-  #books-cards .prose,
-  #movies-cards .prose,
-  #anime-cards .prose,
-  #games-cards .prose {
-    max-width: 100% !important;
-  }
-
-  #books-cards .bg-yellow-50,
-  #movies-cards .bg-yellow-50,
-  #anime-cards .bg-yellow-50,
-  #games-cards .bg-yellow-50 {
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-
-  #books-cards a,
-  #movies-cards a,
-  #anime-cards a,
-  #games-cards a {
-    display: block;
-    width: 100% !important;
-    text-align: center;
-  }
-}
     </style>
 </head>
 <body class="bg-gray-50 relative">
@@ -205,9 +144,11 @@
             <!-- Content Sections -->
             <div class="space-y-12">
                 <!-- Books Section -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Books</h2>
-                        <div id="books-cards" class="space-y-12"></div>
+                   <!-- Books Section -->
+<div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+  <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Books</h2>
+  <div id="books-cards" class="space-y-12"></div>
+</div>
 
                 <!-- Movies/TV Series Section -->
                     <div class="p-6">
