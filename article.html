@@ -187,7 +187,7 @@ body, html {
             
             <!-- Similar Articles -->
             <div class="mt-16">
-                <h2 class="text-2xl font-bold heading-font text-gray-800 mb-6">Similar Articles</h2>
+              <h2 id="similar-articles-title" class="text-2xl font-bold heading-font mb-6">Similar Articles</h2>
                 <div class="relative">
                     <div class="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 scroll-smooth">
                     <!-- Similar Article 1 -->
@@ -797,6 +797,29 @@ async function loadSimilarArticles(currentId, category) {
   }
 }
 </script>
+<script>
+async function loadThemeColors() {
+  try {
+    const res = await fetch(`${API_URL}/api/theme`);
+    const json = await res.json();
+    const theme = json?.data || {};
 
+    // достаем цвет заголовка Similar Articles
+    const similarTitleColor = theme.similarArticlesTitleColor || "#ff5733"; // 🔥 дефолтный цвет (оранжевый)
+
+    const titleEl = document.getElementById("similar-articles-title");
+    if (titleEl) {
+      titleEl.style.color = similarTitleColor;
+    }
+  } catch (err) {
+    console.error("Ошибка загрузки Theme:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadBackground();
+  loadThemeColors(); // подключаем цвета
+});
+</script>
 </body>
 </html>
