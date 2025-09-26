@@ -68,6 +68,7 @@
   .mt-16 .bg-white.rounded-lg.shadow-md {
     min-width: 100% !important;
     max-width: 100% !important;
+      
   }
 }
 /* 📱 Фикс карточек только на телефоне */
@@ -102,6 +103,35 @@
   .bg-white.rounded-xl.shadow-lg {
     margin-bottom: 24px;
     width: 100% !important;
+  }
+}
+           /* 📱 Фикс ширины секций на телефоне */
+@media (max-width: 768px) {
+  /* Все белые секции (Books, Movies, Anime, Games, Music) */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Контент внутри тоже растягивается */
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg .p-6 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Карточки внутри секций */
+  #books-cards > div,
+  #movies-cards > div,
+  #anime-cards > div,
+  #games-cards > div,
+  #music-cards > div {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
     </style>
