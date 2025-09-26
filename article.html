@@ -52,98 +52,19 @@
             transform: translateY(-3px);
         }
 
-        /* 📱 Фикс мобильного сужения */
+      /* 📱 На телефоне убираем белые блоки и растягиваем контент */
 @media (max-width: 768px) {
-  /* Убираем горизонтальную прокрутку */
-  .mt-16 .relative .flex {
-    flex-direction: column;
-    overflow-x: visible;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-  }
-
-  /* Карточки на всю ширину */
-  .mt-16 .recommendation-card,
-  .mt-16 .bg-white.rounded-lg.shadow-md {
-    min-width: 100% !important;
-    max-width: 100% !important;
-      
-  }
-}
-/* 📱 Фикс карточек только на телефоне */
-@media (max-width: 768px) {
-  /* Контентные секции (Books, Movies, Anime, Games, Music) */
-  #books-cards,
-  #movies-cards,
-  #anime-cards,
-  #games-cards,
-  #music-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 16px; /* одинаковые отступы слева/справа */
-    box-sizing: border-box;
-  }
-
-  /* Каждая карточка внутри секций */
-  #books-cards > div,
-  #movies-cards > div,
-  #anime-cards > div,
-  #games-cards > div,
-  #music-cards > div {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Карточки внутри секций */
-  #books-cards > div,
-  #movies-cards > div,
-  #anime-cards > div,
-  #games-cards > div,
-  #music-cards > div {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-           /* 📱 Ширина первой секции (Books) как у верхнего блока */
-@media (max-width: 768px) {
-  .space-y-12 > .bg-white.rounded-xl.shadow-lg:first-child {
-    width: calc(100% - 2rem) !important; /* как верхний блок */
-    max-width: calc(100% - 2rem) !important;
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
+    background: transparent !important;  /* убираем белый фон */
+    box-shadow: none !important;         /* убираем тень */
+    border-radius: 0 !important;         /* убираем скругление */
+    width: calc(100% - 2rem) !important; /* как верхний бежевый блок */
     margin: 0 auto 24px auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-}
-           /* 📱 Выравнивание Books и остальных секций по ширине верхнего блока */
-@media (max-width: 768px) {
-  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
-    width: calc(100% - 2rem) !important; /* как у верхнего блока */
-    max-width: calc(100% - 2rem) !important;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-/* 📱 Выравнивание всех секций под верхний блок */
-@media (max-width: 768px) {
-  .space-y-12 > .bg-white.rounded-xl.shadow-lg {
-    width: calc(100% - 2rem) !important; /* как у верхнего блока */
-    max-width: calc(100% - 2rem) !important;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    background: #fffbe6; /* 🔥 экспериментально другой цвет, чтобы проверить */
+    padding: 0 !important;
   }
 
-  /* Контент внутри тоже растягиваем */
   .space-y-12 > .bg-white.rounded-xl.shadow-lg > .p-6 {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding: 0 !important; /* убираем внутренние паддинги */
   }
 }
     </style>
