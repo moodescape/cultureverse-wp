@@ -134,6 +134,17 @@
     max-width: 100% !important;
   }
 }
+           /* 📱 Ширина первой секции (Books) как у верхнего блока */
+@media (max-width: 768px) {
+  .space-y-12 > .bg-white.rounded-xl.shadow-lg:first-child {
+    width: calc(100% - 2rem) !important; /* как верхний блок */
+    max-width: calc(100% - 2rem) !important;
+    margin: 0 auto 24px auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50 relative">
