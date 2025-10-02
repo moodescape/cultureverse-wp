@@ -440,8 +440,17 @@ if (acf.movies && Array.isArray(acf.movies)) {
   moviesEl.innerHTML = acf.movies.map(m => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
       ${m.poster?.url ? `<img src="${m.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${m.title || ""}</h3>
-      <p class="text-gray-600">${m.description || ""}</p>
+      <h3 class="text-lg font-bold mb-2">${m.title || ""}</h3>
+      <p class="text-gray-600 mb-3">${m.description || ""}</p>
+
+      ${m.spoiler ? `
+        <details class="mb-3">
+          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+          <div class="mt-2 text-gray-500 text-sm">${m.spoiler}</div>
+        </details>
+      ` : ""}
+
+      ${m.buylink ? `<a href="${m.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${m.buttonlabel || "Смотреть"}</a>` : ""}
     </div>
   `).join("");
 }
@@ -452,8 +461,17 @@ if (acf.anime && Array.isArray(acf.anime)) {
   animeEl.innerHTML = acf.anime.map(a => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
       ${a.poster?.url ? `<img src="${a.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${a.title || ""}</h3>
-      <p class="text-gray-600">${a.description || ""}</p>
+      <h3 class="text-lg font-bold mb-2">${a.title || ""}</h3>
+      <p class="text-gray-600 mb-3">${a.description || ""}</p>
+
+      ${a.spoiler ? `
+        <details class="mb-3">
+          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+          <div class="mt-2 text-gray-500 text-sm">${a.spoiler}</div>
+        </details>
+      ` : ""}
+
+      ${a.buylink ? `<a href="${a.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${a.buttonlabel || "Смотреть"}</a>` : ""}
     </div>
   `).join("");
 }
@@ -465,8 +483,17 @@ if (acf.games && Array.isArray(acf.games)) {
   gamesEl.innerHTML = acf.games.map(g => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
       ${g.poster?.url ? `<img src="${g.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${g.title || ""}</h3>
-      <p class="text-gray-600">${g.description || ""}</p>
+      <h3 class="text-lg font-bold mb-2">${g.title || ""}</h3>
+      <p class="text-gray-600 mb-3">${g.description || ""}</p>
+
+      ${g.spoiler ? `
+        <details class="mb-3">
+          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+          <div class="mt-2 text-gray-500 text-sm">${g.spoiler}</div>
+        </details>
+      ` : ""}
+
+      ${g.buylink ? `<a href="${g.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${g.buttonlabel || "Играть"}</a>` : ""}
     </div>
   `).join("");
 }
@@ -477,10 +504,18 @@ if (acf.music && Array.isArray(acf.music)) {
   musicEl.innerHTML = acf.music.map(track => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
       ${track.cover?.url ? `<img src="${track.cover.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${track.title || ""}</h3>
+      <h3 class="text-lg font-bold mb-2">${track.title || ""}</h3>
+
+      ${track.spoiler ? `
+        <details class="mb-3">
+          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+          <div class="mt-2 text-gray-500 text-sm">${track.spoiler}</div>
+        </details>
+      ` : ""}
+
       <div class="flex gap-2 mt-2">
-        ${track.spotifyLink ? `<a href="${track.spotifyLink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
-        ${track.appleLink ? `<a href="${track.appleLink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
+        ${track.spotifylink ? `<a href="${track.spotifylink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
+        ${track.applelink ? `<a href="${track.applelink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
       </div>
     </div>
   `).join("");
