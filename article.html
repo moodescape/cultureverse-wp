@@ -369,10 +369,10 @@ body, html {
             });
         });
     </script>
-   <script>
-// ======= СТРАНИЦА СТАТЬИ (WordPress) =======
+<script>
+const WP_URL = "https://cultureverse.free.nf";
 
-// утилита: снять HTML, если нужно короткое превью
+// ======= СТРАНИЦА СТАТЬИ (WordPress) =======
 function stripHtml(html) {
   const div = document.createElement("div");
   div.innerHTML = html || "";
