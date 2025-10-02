@@ -522,9 +522,9 @@ if (acf.music) {
   const music = Array.isArray(acf.music) ? acf.music : [acf.music];
   musicEl.innerHTML = music.map(track => `
     <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
-      ${track.cover?.url ? `
+      ${track.poster?.url ? `
         <div class="w-32 h-32 flex-shrink-0">
-          <img src="${track.cover.url}" class="w-full h-full object-cover rounded-lg shadow-md">
+          <img src="${track.poster.url}" class="w-full h-full object-cover rounded-lg shadow-md">
         </div>
       ` : ""}
       <div class="flex-1">
