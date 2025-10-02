@@ -274,46 +274,70 @@
  <script>AOS.init();</script>
     <script>feather.replace();</script>
     <script>
-  const API_URL = "https://strapi-production-cb57.up.railway.app";
+  // адрес твоего WordPress
+  const WP_URL = "https://cultureverse.free.nf";
 </script>
 <script>
-let allArticles = []; // все статьи
-let activeCategory = "All"; // текущая категория
-let searchQuery = ""; // текущий текст поиска
+// ======= ВЫВОД СТАТЕЙ НА ГЛАВНОЙ (WordPress) =======
 
+// состояние
+let allArticles = [];
+let activeCategory = "All";
+let searchQuery = "";
+
+// утилита: почистить HTML в аннотации
+function stripHtml(html) {
+  const div = document.createElement("div");
+  div.innerHTML = html || "";
+  return (div.textContent || "").trim();
+}
+
+// привести WP-пост к виду, удобному для рендера
+function normalizePost(post) {
+  const cover = post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url 
+                || "https://via.placeholder.com/640x360";
+  const category = post?._embedded?.["wp:term"]?.[0]?.[0]?.name || "General";
+  return {
+    id: post.id,
+    title: post.title.rendered,
+    preview: stripHtml(post.excerpt.rendered),
+    date: post.date,
+    category,
+    cover
+  };
+}
+
+// загрузка списка постов
 async function loadArticles() {
   try {
-   const response = await fetch(`${API_URL}/api/articles?populate=*`);
-    const data = await response.json();
-    allArticles = data.data; 
-    applyFilters(); // применяем фильтры после загрузки
-  } catch (error) {
-    console.error("Ошибка загрузки статей:", error);
+    const res = await fetch(`${WP_URL}/wp-json/wp/v2/posts?_embed&per_page=100`);
+    const data = await res.json();
+    allArticles = (Array.isArray(data) ? data : []).map(normalizePost);
+    applyFilters();
+  } catch (e) {
+    console.error("Ошибка загрузки статей из WP:", e);
+    document.querySelector("#articles").innerHTML =
+      "<p class='text-gray-500 text-center'>Не удалось загрузить статьи</p>";
   }
 }
 
+// применить фильтры (категория + поиск)
 function applyFilters() {
   let filtered = allArticles;
 
-  // фильтр по категории
   if (activeCategory !== "All") {
-    filtered = filtered.filter(a => a.article_category === activeCategory);
+    filtered = filtered.filter(a => a.category === activeCategory);
   }
 
-  // фильтр по поиску (по началу слова)
   if (searchQuery) {
-    filtered = filtered.filter(a => {
-   const title = (a.Title || a.article_title || "").toLowerCase();
-      return (
-        title.startsWith(searchQuery) ||
-        title.split(" ").some(word => word.startsWith(searchQuery))
-      );
-    });
+    const q = searchQuery.toLowerCase();
+    filtered = filtered.filter(a => a.title.toLowerCase().includes(q));
   }
 
   renderArticles(filtered);
 }
 
+// отрисовка карточек
 function renderArticles(articles) {
   const container = document.querySelector("#articles");
   container.innerHTML = "";
@@ -323,235 +347,54 @@ function renderArticles(articles) {
     return;
   }
 
-  articles.forEach(attrs => {
-  const title = attrs.Title || attrs.article_title || "Без названия";
-const preview = Array.isArray(attrs.article_preview)
-  ? (attrs.article_preview[0]?.children?.[0]?.text || "")
-  : "";
-    const category = attrs.article_category || "General";
-
-  let coverUrl = "https://via.placeholder.com/640x360";
-if (attrs.article_cover) {
-  if (attrs.article_cover.formats?.medium) coverUrl = `${API_URL}${attrs.article_cover.formats.medium.url}`;
-  else if (attrs.article_cover.formats?.small) coverUrl = `${API_URL}${attrs.article_cover.formats.small.url}`;
-  else if (attrs.article_cover.formats?.thumbnail) coverUrl = `${API_URL}${attrs.article_cover.formats.thumbnail.url}`;
-  else if (attrs.article_cover.url) coverUrl = `${API_URL}${attrs.article_cover.url}`;
-}
-
-
-
+  articles.forEach(a => {
+    const dateStr = new Date(a.date).toLocaleDateString();
     const card = `
       <div class="article-card bg-white rounded-xl overflow-hidden shadow-md" data-aos="fade-up">
-        <img src="${coverUrl}" alt="${title}" class="w-full h-48 object-cover">
+        <img src="${a.cover}" alt="${a.title}" class="w-full h-48 object-cover">
         <div class="p-6">
           <div class="flex justify-between items-start mb-3">
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">${category}</span>
-            <span class="text-gray-500 text-sm">${new Date(attrs.createdAt).toLocaleDateString()}</span>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">${a.category}</span>
+            <span class="text-gray-500 text-sm">${dateStr}</span>
           </div>
-          <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">${title}</h3>
-          <p class="text-gray-600 mb-4">${preview}</p>
-          <a href="article.html?id=${attrs.id}" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+          <h3 class="text-xl font-bold heading-font text-gray-800 mb-2">${a.title}</h3>
+          <p class="text-gray-600 mb-4">${a.preview}</p>
+          <a href="article.html?id=${a.id}" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="feather feather-play mr-2">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
-            Play
+            Read
           </a>
         </div>
       </div>
     `;
-    container.innerHTML += card;
+    container.insertAdjacentHTML("beforeend", card);
   });
+
+  // обновим иконки
+  if (window.feather) feather.replace();
 }
 
+// инициализация: кнопки категорий + поиск + загрузка
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. читаем search из URL
-  const params = new URLSearchParams(window.location.search);
-  const initialSearch = (params.get("search") || "").trim();
-  if (initialSearch) {
-    searchQuery = initialSearch.toLowerCase();
-
-    // Заполняем оба поля поиска этим текстом
-    document.querySelectorAll("input[placeholder='Search articles...']").forEach(input => {
-      input.value = initialSearch;
-    });
-  }
-
-  // 2. загружаем статьи
-  loadArticles();
-
-  // 3. фильтрация по категориям
+  // кнопки категорий (они у тебя уже есть в шапке)
   document.querySelectorAll(".category-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      activeCategory = btn.getAttribute("data-category");
+      activeCategory = btn.getAttribute("data-category") || "All";
       applyFilters();
     });
   });
 
-  // 4. поиск в обоих инпутах
+  // инпуты поиска (оба сразу)
   document.querySelectorAll("input[placeholder='Search articles...']").forEach(input => {
     input.addEventListener("input", e => {
-      searchQuery = e.target.value.toLowerCase();
+      searchQuery = (e.target.value || "").toLowerCase().trim();
       applyFilters();
     });
   });
+
+  loadArticles();
 });
-
-</script>
-<script>
-function extractMediaUrl(media) {
-  if (!media) return null;
-
-  // плоская форма
-  if (media.url) return media.url;
-  if (media.formats?.large?.url) return media.formats.large.url;
-  if (media.formats?.medium?.url) return media.formats.medium.url;
-  if (media.formats?.small?.url) return media.formats.small.url;
-  if (media.formats?.thumbnail?.url) return media.formats.thumbnail.url;
-
-  // вложенная форма { data: { attributes } }
-  const a = media.data?.attributes;
-  if (a?.url) return a.url;
-  if (a?.formats?.large?.url) return a.formats.large.url;
-  if (a?.formats?.medium?.url) return a.formats.medium.url;
-  if (a?.formats?.small?.url) return a.formats.small.url;
-  if (a?.formats?.thumbnail?.url) return a.formats.thumbnail.url;
-
-  return null;
-}
-
-async function loadBackground() {
-  const bgDiv = document.getElementById("page-bg");
-  if (!bgDiv) return;
-
-  try {
-    const themeRes = await fetch(`${API_URL}/api/theme?populate=defaultBackground`);
-    const themeJson = await themeRes.json();
-    const theme = themeJson?.data?.attributes || themeJson?.data || {};
-    const defaultBg = theme.defaultBackground || themeJson?.data?.defaultBackground;
-    const themeBg = extractMediaUrl(defaultBg);
-
-    if (themeBg) {
-      const bgUrl = themeBg.startsWith("http") ? themeBg : `${API_URL}${themeBg}`;
-      bgDiv.style.backgroundImage = `url('${bgUrl}')`;
-      bgDiv.style.backgroundSize = "cover";
-      bgDiv.style.backgroundPosition = "center";
-    }
-  } catch (err) {
-    console.error("Ошибка загрузки фона:", err);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadBackground);
-
-    console.error("Ошибка загрузки фона:", err);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadBackground);
-</script>
-<script>
-async function loadHeroBackground() {
-  const heroDiv = document.getElementById("hero-bg");
-  if (!heroDiv) return;
-
-  try {
-    const res = await fetch(`${API_URL}/api/theme?populate=heroBackground`);
-    const json = await res.json();
-    const theme = json?.data || {};
-    const heroBg = theme.heroBackground;
-
-    if (heroBg) {
-      // Берём оптимальный размер
-      let bgUrl = heroBg.formats?.large?.url || heroBg.formats?.medium?.url || heroBg.url;
-      if (bgUrl) {
-        if (!bgUrl.startsWith("http")) bgUrl = `${API_URL}${bgUrl}`;
-        heroDiv.style.backgroundImage = `url('${bgUrl}')`;
-        heroDiv.style.backgroundSize = "cover";
-        heroDiv.style.backgroundPosition = "center";
-      }
-    } else {
-      // fallback: если нет картинки
-      heroDiv.style.background = "linear-gradient(to right, #6366f1, #9333ea)";
-    }
-  } catch (err) {
-    console.error("Ошибка загрузки heroBackground:", err);
-  }
-}
-document.addEventListener("DOMContentLoaded", loadHeroBackground);
-</script>
-
-<script>
-async function loadHeroTextColors() {
-  try {
-    const res = await fetch(`${API_URL}/api/theme?populate=*`);
-    const json = await res.json();
-    const theme = json?.data?.attributes || json?.data || {};
-
-    // Заголовок
-    if (theme.heroTitleColor) {
-      document.querySelector("#hero-section h1").style.color = theme.heroTitleColor;
-    }
-
-    // Подзаголовок
-    if (theme.heroSubtitleColor) {
-      document.querySelector("#hero-section p").style.color = theme.heroSubtitleColor;
-    }
-  } catch (err) {
-    console.error("Ошибка загрузки цветов:", err);
-  }
-}
-document.addEventListener("DOMContentLoaded", loadHeroTextColors);
-</script>
-<script>
-async function loadHeroSearchColors() {
-  try {
-    const res = await fetch(`${API_URL}/api/theme?populate=*`);
-    const json = await res.json();
-    const theme = json?.data?.attributes || json?.data || {};
-
-    const searchInput = document.querySelector("#hero-section input[placeholder='Search articles...']");
-    if (searchInput) {
-      // Фон
-      if (theme.heroSearchBgColor) {
-        searchInput.style.backgroundColor = theme.heroSearchBgColor;
-      }
-
-      // Текст
-      if (theme.heroSearchTextColor) {
-        searchInput.style.color = theme.heroSearchTextColor;
-      }
-
-      // Placeholder
-      if (theme.heroSearchPlaceholderColor) {
-        searchInput.style.setProperty("--placeholder-color", theme.heroSearchPlaceholderColor);
-
-        // CSS-хак для кастомного placeholder
-        const style = document.createElement("style");
-        style.innerHTML = `
-          #hero-section input::placeholder {
-            color: var(--placeholder-color);
-          }
-        `;
-        document.head.appendChild(style);
-      }
-    }
-  } catch (err) {
-    console.error("Ошибка загрузки цветов поиска:", err);
-  }
-}
-document.addEventListener("DOMContentLoaded", loadHeroSearchColors);
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    }
-  });
 </script>
 </body>
 </html>
