@@ -527,8 +527,8 @@ if (acf.music) {
   musicEl.innerHTML = music.map(track => `
     <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
       ${track.cover?.url ? `
-        <div class="w-32 flex-shrink-0">
-          <img src="${track.cover.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+        <div class="w-32 h-32 flex-shrink-0">
+          <img src="${track.cover.url}" class="w-full h-full object-cover rounded-lg shadow-md">
         </div>
       ` : ""}
       <div class="flex-1">
@@ -541,7 +541,7 @@ if (acf.music) {
           </details>
         ` : ""}
 
-        <div class="flex gap-2 mt-2">
+        <div class="flex gap-4 mt-2">
           ${track.spotifylink ? `<a href="${track.spotifylink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
           ${track.applelink ? `<a href="${track.applelink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
         </div>
