@@ -409,21 +409,21 @@ const acf = post.acf || {};
 // Books
 const booksEl = document.getElementById("books-cards");
 if (acf.books) {
-  const books = Array.isArray(acf.books) ? acf.books : [acf.books];
-booksEl.innerHTML = acf.books.map(book => `
-  <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
-    ${book.poster?.url ? `
-      <div class="w-32 flex-shrink-0">
-        <img src="${book.poster.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+  const books = Array.isArray(acf.books) ? acf.books : [acf.books]; // оборачиваем в массив
+  booksEl.innerHTML = books.map(book => `
+    <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
+      ${book.poster?.url ? `
+        <div class="w-32 flex-shrink-0">
+          <img src="${book.poster.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+        </div>
+      ` : ""}
+      <div class="flex-1">
+        <h3 class="text-xl font-bold mb-2">${book.title || ""}</h3>
+        <p class="text-gray-600 mb-3">${book.description || ""}</p>
+        ${book.buylink ? `<a href="${book.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${book.buttonlabel || "Read more"}</a>` : ""}
       </div>
-    ` : ""}
-    <div class="flex-1">
-      <h3 class="text-xl font-bold mb-2">${book.title || ""}</h3>
-      <p class="text-gray-600 mb-3">${book.description || ""}</p>
-      ${book.buylink ? `<a href="${book.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${book.buttonlabel || "Read more"}</a>` : ""}
     </div>
-  </div>
-`).join("");
+  `).join("");
 }
 
 // Movies
