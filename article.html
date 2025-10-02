@@ -408,68 +408,68 @@ const acf = post.acf || {};
 
 // Books
 const booksEl = document.getElementById("books-cards");
-if (acf.books) {
-  booksEl.innerHTML = `
+if (acf.books && Array.isArray(acf.books)) {
+  booksEl.innerHTML = acf.books.map(book => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${acf.books.poster?.url ? `<img src="${acf.books.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${acf.books.title || ""}</h3>
-      <p class="text-gray-600">${acf.books.description || ""}</p>
-      ${acf.books.buylink ? `<a href="${acf.books.buylink}" target="_blank" class="inline-block mt-2 text-indigo-600 font-medium">${acf.books.buttonlabel || "Read more"}</a>` : ""}
+      ${book.poster?.url ? `<img src="${book.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${book.title || ""}</h3>
+      <p class="text-gray-600">${book.description || ""}</p>
+      ${book.buylink ? `<a href="${book.buylink}" target="_blank" class="inline-block mt-2 text-indigo-600 font-medium">${book.buttonlabel || "Read more"}</a>` : ""}
     </div>
-  `;
+  `).join("");
 }
+
 
 // Movies
 const moviesEl = document.getElementById("movies-cards");
-if (acf.movies) {
-  moviesEl.innerHTML = `
+if (acf.movies && Array.isArray(acf.movies)) {
+  moviesEl.innerHTML = acf.movies.map(m => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${acf.movies.poster?.url ? `<img src="${acf.movies.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${acf.movies.title || ""}</h3>
-      <p class="text-gray-600">${acf.movies.description || ""}</p>
+      ${m.poster?.url ? `<img src="${m.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${m.title || ""}</h3>
+      <p class="text-gray-600">${m.description || ""}</p>
     </div>
-  `;
+  `).join("");
 }
 
 // Anime
 const animeEl = document.getElementById("anime-cards");
-if (acf.anime) {
-  animeEl.innerHTML = `
+if (acf.anime && Array.isArray(acf.anime)) {
+  animeEl.innerHTML = acf.anime.map(a => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${acf.anime.poster?.url ? `<img src="${acf.anime.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${acf.anime.title || ""}</h3>
-      <p class="text-gray-600">${acf.anime.description || ""}</p>
+      ${a.poster?.url ? `<img src="${a.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${a.title || ""}</h3>
+      <p class="text-gray-600">${a.description || ""}</p>
     </div>
-  `;
+  `).join("");
 }
 
 // Games
 const gamesEl = document.getElementById("games-cards");
-if (acf.games) {
-  gamesEl.innerHTML = `
+if (acf.games && Array.isArray(acf.games)) {
+  gamesEl.innerHTML = acf.games.map(g => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${acf.games.poster?.url ? `<img src="${acf.games.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${acf.games.title || ""}</h3>
-      <p class="text-gray-600">${acf.games.description || ""}</p>
+      ${g.poster?.url ? `<img src="${g.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${g.title || ""}</h3>
+      <p class="text-gray-600">${g.description || ""}</p>
     </div>
-  `;
+  `).join("");
 }
 
 // Music
 const musicEl = document.getElementById("music-cards");
-if (acf.music) {
-  musicEl.innerHTML = `
+if (acf.music && Array.isArray(acf.music)) {
+  musicEl.innerHTML = acf.music.map(track => `
     <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${acf.music.cover?.url ? `<img src="${acf.music.cover.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold">${acf.music.title || ""}</h3>
+      ${track.cover?.url ? `<img src="${track.cover.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${track.title || ""}</h3>
       <div class="flex gap-2 mt-2">
-        ${acf.music.spotifyLink ? `<a href="${acf.music.spotifyLink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
-        ${acf.music.appleLink ? `<a href="${acf.music.appleLink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
+        ${track.spotifyLink ? `<a href="${track.spotifyLink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
+        ${track.appleLink ? `<a href="${track.appleLink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
       </div>
     </div>
-  `;
+  `).join("");
 }
-
 // Gallery
 const galleryEl = document.getElementById("article-gallery");
 if (acf.gallery && Array.isArray(acf.gallery)) {
