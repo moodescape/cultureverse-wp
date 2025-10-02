@@ -434,14 +434,15 @@ if (acf.books) {
 `).join("");
 }
 
-// Movies
-const moviesEl = document.getElementById("movies-cards");
-if (acf.movies) {
-  const movies = Array.isArray(acf.movies) ? acf.movies : [acf.movies];
-  moviesEl.innerHTML = movies.map(m => `
-    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${m.poster?.url ? `<img src="${m.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold mb-2">${m.title || ""}</h3>
+moviesEl.innerHTML = movies.map(m => `
+  <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
+    ${m.poster?.url ? `
+      <div class="w-32 flex-shrink-0">
+        <img src="${m.poster.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+      </div>
+    ` : ""}
+    <div class="flex-1">
+      <h3 class="text-xl font-bold mb-2">${m.title || ""}</h3>
       <p class="text-gray-600 mb-3">${m.description || ""}</p>
 
       ${m.spoiler ? `
@@ -453,8 +454,9 @@ if (acf.movies) {
 
       ${m.buylink ? `<a href="${m.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${m.buttonlabel || "Смотреть"}</a>` : ""}
     </div>
-  `).join("");
-}
+  </div>
+`).join("");
+
 
 // Anime
 const animeEl = document.getElementById("anime-cards");
