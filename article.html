@@ -403,6 +403,80 @@ async function loadArticle() {
     const titleEl   = document.getElementById("article-title");
     const contentEl = document.getElementById("article-content");
     const coverEl   = document.getElementById("article-cover");
+      // ======================= ACF поля =======================
+const acf = post.acf || {};
+
+// Books
+const booksEl = document.getElementById("books-cards");
+if (acf.books) {
+  booksEl.innerHTML = `
+    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
+      ${acf.books.poster?.url ? `<img src="${acf.books.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${acf.books.title || ""}</h3>
+      <p class="text-gray-600">${acf.books.description || ""}</p>
+      ${acf.books.buylink ? `<a href="${acf.books.buylink}" target="_blank" class="inline-block mt-2 text-indigo-600 font-medium">${acf.books.buttonlabel || "Read more"}</a>` : ""}
+    </div>
+  `;
+}
+
+// Movies
+const moviesEl = document.getElementById("movies-cards");
+if (acf.movies) {
+  moviesEl.innerHTML = `
+    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
+      ${acf.movies.poster?.url ? `<img src="${acf.movies.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${acf.movies.title || ""}</h3>
+      <p class="text-gray-600">${acf.movies.description || ""}</p>
+    </div>
+  `;
+}
+
+// Anime
+const animeEl = document.getElementById("anime-cards");
+if (acf.anime) {
+  animeEl.innerHTML = `
+    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
+      ${acf.anime.poster?.url ? `<img src="${acf.anime.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${acf.anime.title || ""}</h3>
+      <p class="text-gray-600">${acf.anime.description || ""}</p>
+    </div>
+  `;
+}
+
+// Games
+const gamesEl = document.getElementById("games-cards");
+if (acf.games) {
+  gamesEl.innerHTML = `
+    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
+      ${acf.games.poster?.url ? `<img src="${acf.games.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${acf.games.title || ""}</h3>
+      <p class="text-gray-600">${acf.games.description || ""}</p>
+    </div>
+  `;
+}
+
+// Music
+const musicEl = document.getElementById("music-cards");
+if (acf.music) {
+  musicEl.innerHTML = `
+    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
+      ${acf.music.cover?.url ? `<img src="${acf.music.cover.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
+      <h3 class="text-lg font-bold">${acf.music.title || ""}</h3>
+      <div class="flex gap-2 mt-2">
+        ${acf.music.spotifyLink ? `<a href="${acf.music.spotifyLink}" target="_blank" class="text-green-600 font-medium">Spotify</a>` : ""}
+        ${acf.music.appleLink ? `<a href="${acf.music.appleLink}" target="_blank" class="text-pink-600 font-medium">Apple Music</a>` : ""}
+      </div>
+    </div>
+  `;
+}
+
+// Gallery
+const galleryEl = document.getElementById("article-gallery");
+if (acf.gallery && Array.isArray(acf.gallery)) {
+  galleryEl.innerHTML = acf.gallery.map(img => `
+    <img src="${img.full_image_url}" class="h-48 object-cover rounded-lg shadow-md">
+  `).join("");
+}
 
     // заголовок / контент
     titleEl.innerHTML   = post.title.rendered;
