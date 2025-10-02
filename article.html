@@ -465,21 +465,28 @@ if (acf.movies) {
 
 // Anime
 const animeEl = document.getElementById("anime-cards");
-if (acf.anime && Array.isArray(acf.anime)) {
-  animeEl.innerHTML = acf.anime.map(a => `
-    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${a.poster?.url ? `<img src="${a.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold mb-2">${a.title || ""}</h3>
-      <p class="text-gray-600 mb-3">${a.description || ""}</p>
-
-      ${a.spoiler ? `
-        <details class="mb-3">
-          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
-          <div class="mt-2 text-gray-500 text-sm">${a.spoiler}</div>
-        </details>
+if (acf.anime) {
+  const anime = Array.isArray(acf.anime) ? acf.anime : [acf.anime];
+  animeEl.innerHTML = anime.map(a => `
+    <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
+      ${a.poster?.url ? `
+        <div class="w-32 flex-shrink-0">
+          <img src="${a.poster.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+        </div>
       ` : ""}
+      <div class="flex-1">
+        <h3 class="text-xl font-bold mb-2">${a.title || ""}</h3>
+        <p class="text-gray-600 mb-3">${a.description || ""}</p>
 
-      ${a.buylink ? `<a href="${a.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${a.buttonlabel || "Смотреть"}</a>` : ""}
+        ${a.spoiler ? `
+          <details class="mb-3">
+            <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+            <div class="mt-2 text-gray-500 text-sm">${a.spoiler}</div>
+          </details>
+        ` : ""}
+
+        ${a.buylink ? `<a href="${a.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${a.buttonlabel || "Смотреть"}</a>` : ""}
+      </div>
     </div>
   `).join("");
 }
@@ -487,21 +494,28 @@ if (acf.anime && Array.isArray(acf.anime)) {
 
 // Games
 const gamesEl = document.getElementById("games-cards");
-if (acf.games && Array.isArray(acf.games)) {
-  gamesEl.innerHTML = acf.games.map(g => `
-    <div class="bg-white rounded-lg shadow-md p-4 recommendation-card">
-      ${g.poster?.url ? `<img src="${g.poster.url}" class="w-full h-48 object-cover rounded-lg mb-4">` : ""}
-      <h3 class="text-lg font-bold mb-2">${g.title || ""}</h3>
-      <p class="text-gray-600 mb-3">${g.description || ""}</p>
-
-      ${g.spoiler ? `
-        <details class="mb-3">
-          <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
-          <div class="mt-2 text-gray-500 text-sm">${g.spoiler}</div>
-        </details>
+if (acf.games) {
+  const games = Array.isArray(acf.games) ? acf.games : [acf.games];
+  gamesEl.innerHTML = games.map(g => `
+    <div class="bg-white rounded-lg shadow-md p-6 flex gap-6 items-start recommendation-card">
+      ${g.poster?.url ? `
+        <div class="w-32 flex-shrink-0">
+          <img src="${g.poster.url}" class="w-full h-auto object-cover rounded-lg shadow-md">
+        </div>
       ` : ""}
+      <div class="flex-1">
+        <h3 class="text-xl font-bold mb-2">${g.title || ""}</h3>
+        <p class="text-gray-600 mb-3">${g.description || ""}</p>
 
-      ${g.buylink ? `<a href="${g.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${g.buttonlabel || "Играть"}</a>` : ""}
+        ${g.spoiler ? `
+          <details class="mb-3">
+            <summary class="cursor-pointer text-indigo-600 font-medium">Показать спойлер</summary>
+            <div class="mt-2 text-gray-500 text-sm">${g.spoiler}</div>
+          </details>
+        ` : ""}
+
+        ${g.buylink ? `<a href="${g.buylink}" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">${g.buttonlabel || "Играть"}</a>` : ""}
+      </div>
     </div>
   `).join("");
 }
